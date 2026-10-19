@@ -1,0 +1,26 @@
+class Solution:
+    def stoneGameIX(self, stones: List[int]) -> bool:
+        cnt = [0, 0, 0]
+
+        for x in stones:
+            cnt[x % 3] += 1
+
+        def check(one, two, zero):
+            if one == 0:
+                return False
+
+            one -= 1
+            pairs = min(one, two)
+
+            length = 1 + pairs * 2 + zero
+
+            one -= pairs
+            two -= pairs
+
+            if one > 0:
+                length += 1
+                one -= 1
+
+            return length % 2 == 1 and one + two > 0
+
+        return check(cnt[1], cnt[2], cnt[0]) or check(cnt[2], cnt[1], cnt[0])

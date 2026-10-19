@@ -1,0 +1,26 @@
+class Solution:
+    def maxActiveSectionsAfterTrade(self, s: str) -> int:
+        ones = s.count('1')
+        t = '1' + s + '1'
+        n = len(t)
+
+        z = []
+        i = 1
+        while i < n - 1:
+            if t[i] == '0':
+                j = i
+                while j < n - 1 and t[j] == '0':
+                    j += 1
+                z.append(j - i)
+                i = j
+            else:
+                i += 1
+
+        if len(z) < 2:
+            return ones
+
+        best = 0
+        for i in range(len(z) - 1):
+            best = max(best, z[i] + z[i + 1])
+
+        return ones + best

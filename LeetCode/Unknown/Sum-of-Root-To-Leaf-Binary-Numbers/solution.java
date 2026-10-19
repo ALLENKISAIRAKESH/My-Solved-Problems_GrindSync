@@ -1,0 +1,48 @@
+class Solution {
+    public int sumRootToLeaf(TreeNode root) {
+
+        /*
+        🔥 APPROACH: DFS (Binary Path Building)
+
+        From problem :contentReference[oaicite:0]{index=0}
+
+        💡 Idea:
+        Each root → leaf path forms a binary number
+
+        Example:
+        path: 1 → 0 → 1
+        number = ((1 << 1) | 0) << 1 | 1 = 5
+
+        ------------------------------------------------
+
+        💡 Trick:
+        At each node:
+            curr = (curr << 1) | node.val
+
+        When we reach leaf:
+            add curr to answer
+
+        ------------------------------------------------
+
+        ⏱ Time: O(n)
+        */
+
+        return dfs(root, 0);
+    }
+
+    private int dfs(TreeNode node, int curr) {
+
+        if (node == null) return 0;
+
+        // build binary number
+        curr = (curr << 1) | node.val;
+
+        // if leaf → return value
+        if (node.left == null && node.right == null) {
+            return curr;
+        }
+
+        // sum from left + right
+        return dfs(node.left, curr) + dfs(node.right, curr);
+    }
+}

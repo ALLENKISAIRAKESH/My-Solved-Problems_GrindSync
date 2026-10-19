@@ -1,0 +1,93 @@
+class Solution {
+
+    // 🔍 Helper function to validate coupon code
+    public boolean check(String code, boolean isActive) {
+
+        /*
+        🔥 Conditions:
+        1. Code must contain only:
+           - letters (a-z, A-Z)
+           - digits (0-9)
+           - underscore '_'
+
+        2. Coupon must be active
+        */
+
+        for (char it : code.toCharArray()) {
+
+            // ❌ invalid character check
+            if (it != '_' && !Character.isLetterOrDigit(it)) {
+                return false;
+            }
+        }
+
+        // ✅ valid only if active
+        return isActive;
+    }
+
+    public List<String> validateCoupons(
+        String[] code,
+        String[] businessLine,
+        boolean[] isActive
+    ) {
+
+        /*
+        🔥 APPROACH:
+
+        1. Create 4 groups based on businessLine:
+           - electronics
+           - grocery
+           - pharmacy
+           - restaurant
+
+        2. For each coupon:
+           - check validity
+           - place in correct group
+
+        3. Sort each group lexicographically
+
+        4. Combine all groups in fixed order
+        */
+
+        // 📦 groups[0] → electronics
+        // 📦 groups[1] → grocery
+        // 📦 groups[2] → pharmacy
+        // 📦 groups[3] → restaurant
+        List<String>[] groups = new ArrayList[4];
+        for (int i = 0; i < 4; i++) {
+            groups[i] = new ArrayList<>();
+        }
+
+        List<String> ans = new ArrayList<>();
+
+        // 🔁 process each coupon
+        for (int i = 0; i < code.length; i++) {
+
+            // ✅ valid coupon check
+            if (!code[i].isEmpty() && check(code[i], isActive[i])) {
+
+                // 📌 categorize by business line
+                if (businessLine[i].equals("electronics")) {
+                    groups[0].add(code[i]);
+
+                } else if (businessLine[i].equals("grocery")) {
+                    groups[1].add(code[i]);
+
+                } else if (businessLine[i].equals("pharmacy")) {
+                    groups[2].add(code[i]);
+
+                } else if (businessLine[i].equals("restaurant")) {
+                    groups[3].add(code[i]);
+                }
+            }
+        }
+
+        // 🔽 sort each group and merge
+        for (List<String> group : groups) {
+            Collections.sort(group);  // lexicographical sort
+            ans.addAll(group);        // append to final answer
+        }
+
+        return ans;
+    }
+}

@@ -1,0 +1,49 @@
+class Solution {
+    public double champagneTower(int poured, int query_row, int query_glass) {
+
+        /*
+        🔥 APPROACH: Simulation (DP on rows)
+
+        From problem :contentReference[oaicite:0]{index=0}
+
+        💡 Idea:
+        Each glass holds max 1.0
+        Overflow spills equally to next row
+
+        ------------------------------------------------
+
+        💡 Process:
+        - dp[i][j] = amount of champagne in that glass
+        - If dp[i][j] > 1:
+            overflow = (dp[i][j] - 1) / 2
+            → add to dp[i+1][j] and dp[i+1][j+1]
+
+        ------------------------------------------------
+
+        Only need up to 100 rows (constraint)
+
+        ------------------------------------------------
+
+        ⏱ Time: O(100^2)
+        */
+
+        double[][] dp = new double[101][101];
+        dp[0][0] = poured;
+
+        for (int i = 0; i <= query_row; i++) {
+            for (int j = 0; j <= i; j++) {
+
+                if (dp[i][j] > 1.0) {
+                    double overflow = (dp[i][j] - 1.0) / 2.0;
+
+                    dp[i + 1][j] += overflow;
+                    dp[i + 1][j + 1] += overflow;
+
+                    dp[i][j] = 1.0; // cap at 1
+                }
+            }
+        }
+
+        return Math.min(1.0, dp[query_row][query_glass]);
+    }
+}

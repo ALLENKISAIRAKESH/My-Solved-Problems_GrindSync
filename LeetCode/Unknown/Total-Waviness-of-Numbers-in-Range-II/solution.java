@@ -1,0 +1,99 @@
+class Solution {
+
+    private String s;
+    private long[][][] memoCnt;
+    private long[][][] memoSum;
+
+    public long totalWaviness(long num1, long num2) {
+        return solve(num2) - solve(num1 - 1);
+    }
+
+    private long solve(long x) {
+        if (x < 100) return 0;
+
+        s = String.valueOf(x);
+
+        int n = s.length();
+
+        memoCnt = new long[n][11][11];
+        memoSum = new long[n][11][11];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 11; j++) {
+                java.util.Arrays.fill(memoCnt[i][j], -1);
+                java.util.Arrays.fill(memoSum[i][j], -1);
+            }
+        }
+
+        long[] res = dfs(0, -1, -1, true, true);
+        return res[1];
+    }
+
+    private long[] dfs(int pos, int prev, int curr,
+                       boolean limit, boolean leading) {
+
+        if (pos == s.length()) {
+            return new long[]{1, 0};
+        }
+
+        if (!limit && !leading && prev != -1 && curr != -1
+                && memoCnt[pos][prev][curr] != -1) {
+
+            return new long[]{
+                    memoCnt[pos][prev][curr],
+                    memoSum[pos][prev][curr]
+            };
+        }
+
+        int up = limit ? s.charAt(pos) - '0' : 9;
+
+        long cnt = 0;
+        long sum = 0;
+
+        for (int digit = 0; digit <= up; digit++) {
+
+            boolean newLeading = leading && digit == 0;
+
+            int newPrev, newCurr;
+
+            if (newLeading) {
+                newPrev = -1;
+                newCurr = -1;
+            } else {
+                newPrev = curr;
+                newCurr = digit;
+            }
+
+            long[] next = dfs(
+                    pos + 1,
+                    newPrev,
+                    newCurr,
+                    limit && digit == up,
+                    newLeading
+            );
+
+            long subCnt = next[0];
+            long subSum = next[1];
+
+            sum += subSum;
+
+            if (!newLeading &&
+                    prev != -1 &&
+                    curr != -1 &&
+                    ((prev < curr && curr > digit) ||
+                     (prev > curr && curr < digit))) {
+
+                sum += subCnt;
+            }
+
+            cnt += subCnt;
+        }
+
+        if (!limit && !leading && prev != -1 && curr != -1) {
+            memoCnt[pos][prev][curr] = cnt;
+            memoSum[pos][prev][curr] = sum;
+        }
+
+        return new long[]{cnt, sum};
+    }
+}

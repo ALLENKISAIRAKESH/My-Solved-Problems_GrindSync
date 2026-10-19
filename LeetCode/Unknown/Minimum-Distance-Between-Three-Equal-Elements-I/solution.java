@@ -1,0 +1,63 @@
+import java.util.*;
+
+class Solution {
+    public int minimumDistance(int[] nums) {
+
+        /*
+        🔥 APPROACH: Group indices + Sliding Window (size 3)
+
+        From problem :contentReference[oaicite:0]{index=0}:
+
+        Distance formula:
+        abs(i - j) + abs(j - k) + abs(k - i)
+
+        If i < j < k:
+        → simplifies to:
+           (j - i) + (k - j) + (k - i)
+         = 2 * (k - i)
+
+        👉 So we ONLY need:
+        - For same value → pick 3 indices
+        - Minimize (k - i)
+
+        Strategy:
+        1. Group indices by value
+        2. For each group:
+            - take every consecutive triplet (i, j, k)
+            - compute distance = 2 * (k - i)
+        3. take minimum
+
+        ⏱ Time: O(n)
+        💾 Space: O(n)
+        */
+
+        // Step 1: group indices by value
+        Map<Integer, List<Integer>> map = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            map.computeIfAbsent(nums[i], x -> new ArrayList<>()).add(i);
+        }
+
+        int ans = Integer.MAX_VALUE;
+
+        // Step 2: check each group
+        for (List<Integer> list : map.values()) {
+
+            // need at least 3 occurrences
+            if (list.size() < 3) continue;
+
+            // sliding window of size 3
+            for (int i = 0; i + 2 < list.size(); i++) {
+
+                int left = list.get(i);
+                int right = list.get(i + 2);
+
+                // distance = 2 * (k - i)
+                ans = Math.min(ans, 2 * (right - left));
+            }
+        }
+
+        // Step 3: return result
+        return ans == Integer.MAX_VALUE ? -1 : ans;
+    }
+}

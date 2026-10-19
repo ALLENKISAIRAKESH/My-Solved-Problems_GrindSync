@@ -1,0 +1,48 @@
+class Solution {
+    public int countPrimeSetBits(int left, int right) {
+
+        /*
+        🔥 APPROACH:
+
+        From problem :contentReference[oaicite:0]{index=0}
+
+        💡 Idea:
+        For each number:
+        1. Count set bits → Integer.bitCount()
+        2. Check if that count is prime
+
+        -----------------------------------------
+
+        💡 Small Optimization:
+        Max bits for n ≤ 10^6 → ~20 bits
+
+        Prime set → precompute:
+        {2,3,5,7,11,13,17,19}
+
+        -----------------------------------------
+
+        ⏱ Time: O(n)
+        */
+
+        // primes up to 20 bits
+        boolean[] isPrime = new boolean[21];
+        int[] primes = {2,3,5,7,11,13,17,19};
+
+        for (int p : primes) {
+            isPrime[p] = true;
+        }
+
+        int count = 0;
+
+        for (int i = left; i <= right; i++) {
+
+            int bits = Integer.bitCount(i);
+
+            if (isPrime[bits]) {
+                count++;
+            }
+        }
+
+        return count;
+    }
+}

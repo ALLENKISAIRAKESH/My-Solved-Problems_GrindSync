@@ -1,0 +1,49 @@
+class Solution {
+    static final int MOD = 1000000007;
+
+    public int assignEdgeWeights(int[][] edges) {
+        int n = edges.length + 1;
+
+        ArrayList<Integer>[] g = new ArrayList[n + 1];
+        for (int i = 1; i <= n; i++) {
+            g[i] = new ArrayList<>();
+        }
+
+        for (int[] e : edges) {
+            g[e[0]].add(e[1]);
+            g[e[1]].add(e[0]);
+        }
+
+        Queue<Integer> q = new LinkedList<>();
+        boolean[] vis = new boolean[n + 1];
+
+        q.offer(1);
+        vis[1] = true;
+
+        int depth = -1;
+
+        while (!q.isEmpty()) {
+            int size = q.size();
+            depth++;
+
+            while (size-- > 0) {
+                int node = q.poll();
+
+                for (int nei : g[node]) {
+                    if (!vis[nei]) {
+                        vis[nei] = true;
+                        q.offer(nei);
+                    }
+                }
+            }
+        }
+
+        long ans = 1;
+
+        for (int i = 1; i < depth; i++) {
+            ans = (ans * 2) % MOD;
+        }
+
+        return (int) ans;
+    }
+}
