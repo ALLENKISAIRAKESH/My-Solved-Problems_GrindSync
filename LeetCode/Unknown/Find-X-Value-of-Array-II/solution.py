@@ -1,0 +1,50 @@
+class Solution:
+    def resultArray(self, nums: List[int], k: int, queries: List[List[int]]) -> List[int]:
+        n = len(nums)
+        t = [[1, [0] * k] for _ in range(4 * n)]
+        def merge(a, b):
+            p, c = a
+            q, d = b
+            z = c[:]
+            for i in range(k):
+                z[p * i % k] += d[i]
+            return [p * q % k, z]
+        def build(v, l, r):
+            if l == r:
+                x = nums[l] % k
+                t[v] = [x, [int(i == x) for i in range(k)]]
+                return
+            m = (l + r) // 2
+            build(v * 2, l, m)
+            build(v * 2 + 1, m + 1, r)
+            t[v] = merge(t[v * 2], t[v * 2 + 1])
+        def update(v, l, r, p, x):
+            if l == r:
+                x %= k
+                t[v] = [x, [int(i == x) for i in range(k)]]
+                return
+            m = (l + r) // 2
+            if p <= m:
+                update(v * 2, l, m, p, x)
+            else:
+                update(v * 2 + 1, m + 1, r, p, x)
+            t[v] = merge(t[v * 2], t[v * 2 + 1])
+        def query(v, l, r, a, b):
+            if a <= l and r <= b:
+                return t[v]
+            m = (l + r) // 2
+            if b <= m:
+                return query(v * 2, l, m, a, b)
+            if a > m:
+                return query(v * 2 + 1, m + 1, r, a, b)
+            return merge(
+                query(v * 2, l, m, a, b),
+                query(v * 2 + 1, m + 1, r, a, b)
+            )
+        build(1, 0, n - 1)
+        ans = []
+        for i, x, s, r in queries:
+            nums[i] = x
+            update(1, 0, n - 1, i, x)
+            ans.append(query(1, 0, n - 1, s, n - 1)[1][r])
+        return ans
