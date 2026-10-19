@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/remove-element/](https://leetcode.com/problems/remove-element/) |
-| Submitted | 2026-10-19T16:55:35.182Z |
+| Submitted | 2026-10-19T16:55:51.533Z |
 
 
 ## Problem Statement
@@ -71,6 +71,12 @@ Constraints:
 ```python
 class Solution:
     def removeElement(self, nums: list[int], val: int) -> int:
+        k = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[k] = nums[i]
+                k += 1
+        return k
 ```
 
 ---
