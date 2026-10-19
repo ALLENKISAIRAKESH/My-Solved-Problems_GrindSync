@@ -1,0 +1,1 @@
+class Solution { void jobStatusTest() {} }
