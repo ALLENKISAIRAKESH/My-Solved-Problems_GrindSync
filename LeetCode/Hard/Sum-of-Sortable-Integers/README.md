@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/sum-of-sortable-integers/](https://leetcode.com/problems/sum-of-sortable-integers/) |
-| Submitted | 2026-10-20T08:49:46.912Z |
+| Submitted | 2026-10-20T08:49:52.228Z |
 
 
 ## Problem Statement
@@ -85,7 +85,7 @@ Constraints:
 class Solution:
     def sortableIntegers(self, nums: list[int]) -> int:
         n = len(nums)
-        a= 0
+        as= 0
         for k in range(1, n + 1):
             if n % k:
                 continue
