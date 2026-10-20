@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/sum-of-sortable-integers/](https://leetcode.com/problems/sum-of-sortable-integers/) |
-| Submitted | 2026-10-20T08:50:47.508Z |
+| Submitted | 2026-10-20T08:50:53.264Z |
 
 
 ## Problem Statement
@@ -94,18 +94,14 @@ class Solution:
             for i in range(0, n, k):
                 b = nums[i:i + k]
                 d = [j for j in range(k) if b[j] > b[(j + 1) % k]]
-
                 if len(d) > 1:
                     ok = False
                     break
-
                 j = (d[0] + 1) % k if d else 0
                 b = b[j:] + b[:j]
-
                 if b[0] < p:
                     ok = False
                     break
-
                 p = b[-1]
 
             if ok:
