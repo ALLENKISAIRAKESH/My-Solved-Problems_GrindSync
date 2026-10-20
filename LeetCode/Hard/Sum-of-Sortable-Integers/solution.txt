@@ -9,8 +9,7 @@ class Solution:
             for i in range(0, n, k):
                 block = nums[i:i + k]
                 arr.extend(sorted(block))
-
             if arr == sorted(nums):
-                ans += k
+                a += k
 
         return ans
