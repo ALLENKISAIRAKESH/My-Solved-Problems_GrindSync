@@ -11,5 +11,4 @@ class Solution:
                 arr.extend(sorted(block))
             if arr == sorted(nums):
                 a += k
-
-        return ans
+        return a
