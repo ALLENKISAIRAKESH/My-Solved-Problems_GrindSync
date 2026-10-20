@@ -10,13 +10,10 @@ class Solution:
             for i in range(0, n, k):
                 b = nums[i:i + k]
                 c = sorted(b)
-
                 if any(b != c[j:] + c[:j] for j in range(k)):
                     ok = False
                     break
-
                 a.extend(c)
-
             if ok and a == sorted(nums):
                 ans += k
 
