@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/sum-of-sortable-integers/](https://leetcode.com/problems/sum-of-sortable-integers/) |
-| Submitted | 2026-10-20T08:50:53.264Z |
+| Submitted | 2026-10-20T08:50:58.461Z |
 
 
 ## Problem Statement
@@ -103,10 +103,8 @@ class Solution:
                     ok = False
                     break
                 p = b[-1]
-
             if ok:
                 ans += k
-
         return ans
 ```
 

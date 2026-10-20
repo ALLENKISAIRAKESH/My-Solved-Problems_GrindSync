@@ -19,8 +19,6 @@ class Solution:
                     ok = False
                     break
                 p = b[-1]
-
             if ok:
                 ans += k
-
         return ans
