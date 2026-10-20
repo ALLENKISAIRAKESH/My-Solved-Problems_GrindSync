@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/sum-of-sortable-integers/](https://leetcode.com/problems/sum-of-sortable-integers/) |
-| Submitted | 2026-10-20T08:48:07.113Z |
+| Submitted | 2026-10-20T08:48:11.486Z |
 
 
 ## Problem Statement
@@ -89,7 +89,6 @@ class Solution:
         for k in range(1, n + 1):
             if n % k != 0:
                 continue
-
             arr = []
             for i in range(0, n, k):
                 block = nums[i:i + k]
