@@ -1,7 +1,7 @@
 class Solution:
     def sortableIntegers(self, nums: list[int]) -> int:
         n = len(nums)
-        as= 0
+        ans= 0
         for k in range(1, n + 1):
             if n % k:
                 continue
@@ -15,6 +15,6 @@ class Solution:
                     break
                 a.extend(c)
             if ok and a == sorted(nums):
-                as += k
+                ans += k
 
         return as
