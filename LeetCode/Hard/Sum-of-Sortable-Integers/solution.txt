@@ -7,7 +7,6 @@ class Solution:
                 continue
             a = []
             ok = True
-
             for i in range(0, n, k):
                 b = nums[i:i + k]
                 c = sorted(b)

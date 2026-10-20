@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/sum-of-sortable-integers/](https://leetcode.com/problems/sum-of-sortable-integers/) |
-| Submitted | 2026-10-20T08:49:37.197Z |
+| Submitted | 2026-10-20T08:49:42.521Z |
 
 
 ## Problem Statement
@@ -91,7 +91,6 @@ class Solution:
                 continue
             a = []
             ok = True
-
             for i in range(0, n, k):
                 b = nums[i:i + k]
                 c = sorted(b)
