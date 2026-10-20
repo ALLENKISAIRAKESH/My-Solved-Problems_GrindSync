@@ -1,2 +1,18 @@
 class Solution:
     def sortableIntegers(self, nums: list[int]) -> int:
+        n = len(nums)
+        ans = 0
+
+        for k in range(1, n + 1):
+            if n % k != 0:
+                continue
+
+            arr = []
+            for i in range(0, n, k):
+                block = nums[i:i + k]
+                arr.extend(sorted(block))
+
+            if arr == sorted(nums):
+                ans += k
+
+        return ans
