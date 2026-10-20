@@ -15,6 +15,6 @@ class Solution:
                     break
                 a.extend(c)
             if ok and a == sorted(nums):
-                ans += k
+                as += k
 
-        return ans
+        return a

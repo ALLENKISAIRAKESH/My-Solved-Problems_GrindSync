@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/sum-of-sortable-integers/](https://leetcode.com/problems/sum-of-sortable-integers/) |
-| Submitted | 2026-10-20T08:49:52.228Z |
+| Submitted | 2026-10-20T08:49:58.688Z |
 
 
 ## Problem Statement
@@ -99,9 +99,9 @@ class Solution:
                     break
                 a.extend(c)
             if ok and a == sorted(nums):
-                ans += k
+                as += k
 
-        return ans
+        return a
 ```
 
 ---
