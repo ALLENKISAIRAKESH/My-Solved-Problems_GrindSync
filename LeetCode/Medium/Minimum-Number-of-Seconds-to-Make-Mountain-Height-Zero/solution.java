@@ -1,0 +1,69 @@
+class Solution {
+    public long minNumberOfSeconds(int mountainHeight, int[] workerTimes) {
+
+        /*
+        🔥 APPROACH: Binary Search + Math
+
+        From problem :contentReference[oaicite:0]{index=0}
+
+        Each worker with time t:
+        To reduce x height:
+            time = t * (1 + 2 + ... + x)
+                 = t * x * (x + 1) / 2
+
+        ----------------------------------------
+
+        💡 For given time T:
+        Find max x such that:
+            t * x*(x+1)/2 <= T
+
+        Solve using quadratic:
+            x ≈ floor((sqrt(1 + 8*T/t) - 1) / 2)
+
+        ----------------------------------------
+
+        Check:
+        total height reduced by all workers >= mountainHeight ?
+
+        ----------------------------------------
+
+        ⏱ Time: O(n log answer)
+        */
+
+        long left = 0, right = (long) 1e18;
+        long ans = right;
+
+        while (left <= right) {
+
+            long mid = left + (right - left) / 2;
+
+            if (can(mid, mountainHeight, workerTimes)) {
+                ans = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return ans;
+    }
+
+    private boolean can(long time, int H, int[] workers) {
+
+        long total = 0;
+
+        for (int t : workers) {
+
+            // solve x*(x+1)/2 <= time/t
+            long val = time / t;
+
+            long x = (long) ((Math.sqrt(1 + 8.0 * val) - 1) / 2);
+
+            total += x;
+
+            if (total >= H) return true;
+        }
+
+        return false;
+    }
+}
