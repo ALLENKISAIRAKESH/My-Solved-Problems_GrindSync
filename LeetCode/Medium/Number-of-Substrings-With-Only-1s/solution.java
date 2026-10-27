@@ -1,0 +1,56 @@
+class Solution {
+    public int numSub(String s) {
+
+        /*
+        🔥 APPROACH:
+
+        From problem :contentReference[oaicite:0]{index=0}
+
+        💡 Key Idea:
+        Count consecutive '1's
+
+        If a block has length L:
+        number of substrings = L * (L + 1) / 2
+
+        ------------------------------------------------
+
+        💡 Instead of computing block formula separately,
+        we accumulate on the fly:
+
+        Maintain:
+        - curr = current consecutive 1s length
+        - ans += curr
+
+        ------------------------------------------------
+
+        Example:
+        "111"
+        step:
+        1 → curr=1 → ans=1
+        1 → curr=2 → ans=3
+        1 → curr=3 → ans=6
+
+        ------------------------------------------------
+
+        ⏱ Time: O(n)
+        */
+
+        int MOD = 1_000_000_007;
+        long ans = 0;
+        long curr = 0;
+
+        for (char ch : s.toCharArray()) {
+
+            if (ch == '1') {
+                curr++;
+                ans += curr;
+            } else {
+                curr = 0;
+            }
+
+            ans %= MOD;
+        }
+
+        return (int) ans;
+    }
+}

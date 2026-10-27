@@ -1,0 +1,69 @@
+import java.util.*;
+
+class Solution {
+    public boolean isPossible(int[] target) {
+
+        /*
+        🔥 APPROACH: Reverse Simulation + Max Heap
+
+        Forward process:
+        - Replace one element with total sum
+
+        Reverse thinking (KEY 🔥):
+        - The largest element must have been formed as:
+              largest = previous_sum + something
+
+        So:
+        previous_value = largest - (sum - largest)
+
+        Let:
+        total = sum of array
+        largest = max element
+        rest = total - largest
+
+        Then:
+        previous = largest % rest   (optimized)
+
+        ⚠️ Edge cases:
+        - rest == 0 → impossible
+        - largest <= rest → impossible
+        - rest == 1 → always possible
+
+        ⏱ Time: O(n log n)
+        💾 Space: O(n)
+        */
+
+        // max heap
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+
+        long total = 0;
+
+        // build heap and sum
+        for (int num : target) {
+            pq.offer(num);
+            total += num;
+        }
+
+        while (true) {
+
+            int largest = pq.poll();
+            long rest = total - largest;
+
+            // base cases
+            if (largest == 1 || rest == 1) return true;
+
+            // invalid cases
+            if (rest == 0 || largest <= rest) return false;
+
+            // compute previous value (optimized)
+            int prev = (int)(largest % rest);
+
+            // if modulo gives 0 → invalid
+            if (prev == 0) return false;
+
+            // update heap and total
+            pq.offer(prev);
+            total = rest + prev;
+        }
+    }
+}

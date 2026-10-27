@@ -1,0 +1,49 @@
+class Solution {
+    public boolean checkOnesSegment(String s) {
+
+        /*
+        🔥 APPROACH:
+
+        From problem :contentReference[oaicite:0]{index=0}
+
+        💡 Idea:
+        We need to check if there is ONLY ONE contiguous segment of '1's.
+
+        Trick:
+        - If we ever see "10" followed later by another '1'
+          → means second segment exists → return false
+
+        Even simpler:
+        - Check if substring "01" appears more than once OR
+        - Just check if "01" exists → then after that no more '1' allowed
+
+        BEST SIMPLE TRICK:
+        👉 If string contains "01" AND later contains '1' → false
+        👉 Equivalent: count segments
+
+        ------------------------------------------------
+
+        💡 Optimal:
+        Count transitions from '1' → '0'
+        If we later see '1' again → more than one segment
+
+        ------------------------------------------------
+
+        ⏱ Time: O(n)
+        */
+
+        boolean seenZeroAfterOne = false;
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+
+            if (c == '0') {
+                seenZeroAfterOne = true;
+            } else { // c == '1'
+                if (seenZeroAfterOne) return false;
+            }
+        }
+
+        return true;
+    }
+}

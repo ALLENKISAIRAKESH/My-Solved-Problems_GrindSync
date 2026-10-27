@@ -1,0 +1,57 @@
+class Solution {
+    public char findKthBit(int n, int k) {
+
+        /*
+        🔥 APPROACH (Recursive Insight):
+
+        From problem :contentReference[oaicite:0]{index=0}
+
+        S1 = "0"
+        S2 = "011"
+        S3 = "0111001"
+        ...
+
+        💡 Pattern:
+        length of Sn = 2^n - 1
+
+        Middle index = 2^(n-1)
+
+        For any Sn:
+        left  = Sn-1
+        mid   = '1'
+        right = reverse(invert(Sn-1))
+
+        -----------------------------------------
+
+        💡 Key Observations:
+
+        1. If k == middle → answer = '1'
+
+        2. If k < middle → same as findKthBit(n-1, k)
+
+        3. If k > middle:
+           → mirror index = len - k + 1
+           → answer = invert(findKthBit(n-1, mirror))
+
+        -----------------------------------------
+
+        ⏱ Time: O(n)
+        */
+
+        // base case
+        if (n == 1) return '0';
+
+        int len = (1 << n) - 1;
+        int mid = (len + 1) / 2;
+
+        // case 1: middle
+        if (k == mid) return '1';
+
+        // case 2: left side
+        if (k < mid) return findKthBit(n - 1, k);
+
+        // case 3: right side (mirror + invert)
+        char ch = findKthBit(n - 1, len - k + 1);
+        return ch == '0' ? '1' : '0';
+    }
+}

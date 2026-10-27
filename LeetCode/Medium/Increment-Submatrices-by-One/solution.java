@@ -1,0 +1,56 @@
+class Solution {
+    public int[][] rangeAddQueries(int n, int[][] queries) {
+
+        /*
+        🔥 APPROACH: 2D Difference Array (Prefix Trick)
+
+        From problem :contentReference[oaicite:0]{index=0}
+
+        💡 Idea:
+        Instead of updating entire submatrix (slow),
+        mark boundaries and later compute prefix sums.
+
+        ------------------------------------------------
+
+        For each query [r1, c1, r2, c2]:
+
+        diff[r1][c1] += 1
+        diff[r1][c2 + 1] -= 1   (if valid)
+        diff[r2 + 1][c1] -= 1   (if valid)
+        diff[r2 + 1][c2 + 1] += 1 (if valid)
+
+        ------------------------------------------------
+
+        Then take prefix sum row-wise to build final matrix
+
+        ------------------------------------------------
+
+        ⏱ Time: O(n^2 + q)
+        */
+
+        int[][] diff = new int[n][n];
+
+        // apply queries
+        for (int[] q : queries) {
+            int r1 = q[0], c1 = q[1], r2 = q[2], c2 = q[3];
+
+            diff[r1][c1] += 1;
+
+            if (c2 + 1 < n) diff[r1][c2 + 1] -= 1;
+            if (r2 + 1 < n) diff[r2 + 1][c1] -= 1;
+            if (r2 + 1 < n && c2 + 1 < n) diff[r2 + 1][c2 + 1] += 1;
+        }
+
+        // build final matrix using prefix sum
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+
+                if (i > 0) diff[i][j] += diff[i - 1][j];
+                if (j > 0) diff[i][j] += diff[i][j - 1];
+                if (i > 0 && j > 0) diff[i][j] -= diff[i - 1][j - 1];
+            }
+        }
+
+        return diff;
+    }
+}

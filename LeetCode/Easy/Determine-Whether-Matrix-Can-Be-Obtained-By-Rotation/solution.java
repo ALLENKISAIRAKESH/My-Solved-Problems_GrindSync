@@ -1,0 +1,79 @@
+class Solution {
+    public boolean findRotation(int[][] mat, int[][] target) {
+
+        /*
+        🔥 APPROACH: Try all 4 rotations
+
+        From problem :contentReference[oaicite:0]{index=0}:
+
+        👉 We can rotate matrix:
+            0° → original
+            90°
+            180°
+            270°
+
+        If ANY matches target → return true
+
+        ------------------------------------------------
+
+        💡 Rotation trick (90° clockwise):
+            new[j][n-1-i] = old[i][j]
+
+        ------------------------------------------------
+
+        ⏱ Time: O(4 * n^2) = O(n^2)
+        💾 Space: O(1) (in-place rotation)
+        */
+
+        int n = mat.length;
+
+        // Try 4 rotations
+        for (int k = 0; k < 4; k++) {
+
+            if (isEqual(mat, target)) return true;
+
+            rotate(mat); // rotate 90°
+        }
+
+        return false;
+    }
+
+    // Check if matrices are equal
+    private boolean isEqual(int[][] a, int[][] b) {
+        int n = a.length;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (a[i][j] != b[i][j]) return false;
+            }
+        }
+        return true;
+    }
+
+    // Rotate matrix 90° clockwise (in-place)
+    private void rotate(int[][] mat) {
+        int n = mat.length;
+
+        // Step 1: transpose
+        for (int i = 0; i < n; i++) {
+            for (int j = i; j < n; j++) {
+                int temp = mat[i][j];
+                mat[i][j] = mat[j][i];
+                mat[j][i] = temp;
+            }
+        }
+
+        // Step 2: reverse each row
+        for (int i = 0; i < n; i++) {
+            int left = 0, right = n - 1;
+
+            while (left < right) {
+                int temp = mat[i][left];
+                mat[i][left] = mat[i][right];
+                mat[i][right] = temp;
+                left++;
+                right--;
+            }
+        }
+    }
+}

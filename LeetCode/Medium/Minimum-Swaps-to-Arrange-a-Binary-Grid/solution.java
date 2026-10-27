@@ -1,0 +1,75 @@
+class Solution {
+    public int minSwaps(int[][] grid) {
+
+        /*
+        🔥 APPROACH:
+
+        From problem :contentReference[oaicite:0]{index=0}
+
+        💡 Goal:
+        Make grid valid → all cells ABOVE main diagonal must be 0
+
+        👉 For row i:
+        we need at least (n - i - 1) trailing zeros
+
+        -----------------------------------------
+
+        💡 Steps:
+
+        1. Count trailing zeros for each row
+        2. For each row i:
+           - find a row j >= i with enough trailing zeros
+           - bring row j to i using swaps (bubble up)
+        3. Count swaps
+
+        -----------------------------------------
+
+        ❌ If no such row found → return -1
+
+        -----------------------------------------
+
+        ⏱ Time: O(n^2)
+        */
+
+        int n = grid.length;
+        int[] zeros = new int[n];
+
+        // count trailing zeros for each row
+        for (int i = 0; i < n; i++) {
+            int count = 0;
+            for (int j = n - 1; j >= 0 && grid[i][j] == 0; j--) {
+                count++;
+            }
+            zeros[i] = count;
+        }
+
+        int swaps = 0;
+
+        // process each row
+        for (int i = 0; i < n; i++) {
+
+            int required = n - i - 1;
+            int j = i;
+
+            // find suitable row
+            while (j < n && zeros[j] < required) {
+                j++;
+            }
+
+            // not found
+            if (j == n) return -1;
+
+            // bring row j to position i
+            while (j > i) {
+                int temp = zeros[j];
+                zeros[j] = zeros[j - 1];
+                zeros[j - 1] = temp;
+
+                j--;
+                swaps++;
+            }
+        }
+
+        return swaps;
+    }
+}
