@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/palindromic-path-queries-in-a-tree/](https://leetcode.com/problems/palindromic-path-queries-in-a-tree/) |
-| Submitted | 2026-10-29T15:15:22.751Z |
+| Submitted | 2026-10-29T15:15:29.533Z |
 
 
 ## Problem Statement
@@ -111,19 +111,15 @@ class Solution:
                         stack.append((v, u, 0))
             else:
                 tout[u] = timer - 1
-
         def lca(u, v):
             if depth[u] < depth[v]:
                 u, v = v, u
-
             diff = depth[u] - depth[v]
             for k in range(LOG):
                 if diff & (1 << k):
                     u = up[k][u]
-
             if u == v:
                 return u
-
             for k in range(LOG - 1, -1, -1):
                 if up[k][u] != up[k][v]:
                     u = up[k][u]
