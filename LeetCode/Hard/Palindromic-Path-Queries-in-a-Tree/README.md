@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/palindromic-path-queries-in-a-tree/](https://leetcode.com/problems/palindromic-path-queries-in-a-tree/) |
-| Submitted | 2026-10-29T15:15:04.822Z |
+| Submitted | 2026-10-29T15:15:13.750Z |
 
 
 ## Problem Statement
@@ -85,8 +85,6 @@ Constraints:
 ```tag
 class Solution:
     def palindromePath(self, n: int, edges: list[list[int]], s: str, queries: list[str]) -> list[bool]:
-        from collections import defaultdict
-
         adj = [[] for _ in range(n)]
         for u, v in edges:
             adj[u].append(v)
