@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/palindromic-path-queries-in-a-tree/](https://leetcode.com/problems/palindromic-path-queries-in-a-tree/) |
-| Submitted | 2026-10-29T15:15:48.302Z |
+| Submitted | 2026-10-29T15:16:03.499Z |
 
 
 ## Problem Statement
@@ -160,17 +160,12 @@ class Solution:
             else:
                 u, v = int(parts[1]), int(parts[2])
                 w = lca(u, v)
-
-                # XOR of root-to-node paths
                 path_mask = (
                     range_xor(0, tin[u])
                     ^ range_xor(0, tin[v])
                     ^ masks[w]
                 )
-
-                # At most one character may have an odd frequency
                 ans.append((path_mask & (path_mask - 1)) == 0)
-
         return ans
 ```
 

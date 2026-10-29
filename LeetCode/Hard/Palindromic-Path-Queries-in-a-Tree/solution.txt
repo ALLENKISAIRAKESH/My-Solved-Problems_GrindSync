@@ -75,15 +75,10 @@ class Solution:
             else:
                 u, v = int(parts[1]), int(parts[2])
                 w = lca(u, v)
-
-                # XOR of root-to-node paths
                 path_mask = (
                     range_xor(0, tin[u])
                     ^ range_xor(0, tin[v])
                     ^ masks[w]
                 )
-
-                # At most one character may have an odd frequency
                 ans.append((path_mask & (path_mask - 1)) == 0)
-
         return ans
