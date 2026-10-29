@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/palindromic-path-queries-in-a-tree/](https://leetcode.com/problems/palindromic-path-queries-in-a-tree/) |
-| Submitted | 2026-10-29T15:15:29.533Z |
+| Submitted | 2026-10-29T15:15:36.312Z |
 
 
 ## Problem Statement
@@ -124,18 +124,13 @@ class Solution:
                 if up[k][u] != up[k][v]:
                     u = up[k][u]
                     v = up[k][v]
-
             return up[0][u]
-
-        # Fenwick tree storing XOR bitmasks
         bit = [0] * (n + 1)
-
         def add(i, val):
             i += 1
             while i <= n:
                 bit[i] ^= val
                 i += i & -i
-
         def prefix(i):
             res = 0
             i += 1
