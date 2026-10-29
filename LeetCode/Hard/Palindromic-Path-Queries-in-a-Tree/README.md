@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/palindromic-path-queries-in-a-tree/](https://leetcode.com/problems/palindromic-path-queries-in-a-tree/) |
-| Submitted | 2026-10-29T15:15:41.633Z |
+| Submitted | 2026-10-29T15:15:48.302Z |
 
 
 ## Problem Statement
@@ -146,22 +146,17 @@ class Solution:
         masks = [1 << (ord(c) - ord('a')) for c in chars]
         for u in range(n):
             add(tin[u], masks[u])
-
         ans = []
-
         for q in queries:
             parts = q.split()
-
             if parts[0] == "update":
                 u = int(parts[1])
                 c = parts[2]
                 new_mask = 1 << (ord(c) - ord('a'))
-
                 if masks[u] != new_mask:
                     add(tin[u], masks[u] ^ new_mask)
                     masks[u] = new_mask
                     chars[u] = c
-
             else:
                 u, v = int(parts[1]), int(parts[2])
                 w = lca(u, v)
