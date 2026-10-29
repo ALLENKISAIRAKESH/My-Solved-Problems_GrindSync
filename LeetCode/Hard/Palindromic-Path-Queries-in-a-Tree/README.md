@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/palindromic-path-queries-in-a-tree/](https://leetcode.com/problems/palindromic-path-queries-in-a-tree/) |
-| Submitted | 2026-10-29T15:15:36.312Z |
+| Submitted | 2026-10-29T15:15:41.633Z |
 
 
 ## Problem Statement
@@ -138,15 +138,12 @@ class Solution:
                 res ^= bit[i]
                 i -= i & -i
             return res
-
         def range_xor(l, r):
             if l > r:
                 return 0
             return prefix(r) ^ (prefix(l - 1) if l else 0)
-
         chars = list(s)
         masks = [1 << (ord(c) - ord('a')) for c in chars]
-
         for u in range(n):
             add(tin[u], masks[u])
 
