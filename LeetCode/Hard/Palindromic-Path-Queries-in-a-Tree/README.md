@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/palindromic-path-queries-in-a-tree/](https://leetcode.com/problems/palindromic-path-queries-in-a-tree/) |
-| Submitted | 2026-10-29T15:15:13.750Z |
+| Submitted | 2026-10-29T15:15:22.751Z |
 
 
 ## Problem Statement
@@ -89,27 +89,21 @@ class Solution:
         for u, v in edges:
             adj[u].append(v)
             adj[v].append(u)
-
         LOG = n.bit_length()
         tin = [0] * n
         tout = [0] * n
         depth = [0] * n
         up = [[0] * n for _ in range(LOG)]
         timer = 0
-
-        # Iterative DFS to avoid recursion-depth issues
         stack = [(0, -1, 0)]
         while stack:
             u, p, state = stack.pop()
-
             if state == 0:
                 tin[u] = timer
                 timer += 1
                 up[0][u] = u if p == -1 else p
-
                 for k in range(1, LOG):
                     up[k][u] = up[k - 1][up[k - 1][u]]
-
                 stack.append((u, p, 1))
                 for v in reversed(adj[u]):
                     if v != p:
