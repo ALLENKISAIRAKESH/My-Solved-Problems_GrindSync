@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/](https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/) |
-| Submitted | 2026-10-30T13:41:51.686Z |
+| Submitted | 2026-10-30T13:41:59.753Z |
 
 
 ## Problem Statement
@@ -79,10 +79,6 @@ Constraints:
 ## Solution
 
 ```tag
-from typing import List
-from collections import defaultdict
-import heapq
-
 class Solution:
     def shortestPath(self, n: int, edges: List[List[int]], labels: str, k: int) -> int:
         adj = [[] for _ in range(n)]
