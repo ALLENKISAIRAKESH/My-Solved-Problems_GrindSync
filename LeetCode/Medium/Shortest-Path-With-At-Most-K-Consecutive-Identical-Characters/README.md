@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/](https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/) |
-| Submitted | 2026-10-30T13:42:10.595Z |
+| Submitted | 2026-10-30T13:42:14.577Z |
 
 
 ## Problem Statement
@@ -96,10 +96,8 @@ class Solution:
             for v, w in adj[u]:
                 ch = labels[v]
                 new_cnt = cnt + 1 if ch == last else 1
-
                 if new_cnt > k:
                     continue
-
                 state = (v, ch, new_cnt)
                 nd = d + w
 

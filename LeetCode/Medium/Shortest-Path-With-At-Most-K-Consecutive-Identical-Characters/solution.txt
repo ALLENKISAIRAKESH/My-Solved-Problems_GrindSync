@@ -15,10 +15,8 @@ class Solution:
             for v, w in adj[u]:
                 ch = labels[v]
                 new_cnt = cnt + 1 if ch == last else 1
-
                 if new_cnt > k:
                     continue
-
                 state = (v, ch, new_cnt)
                 nd = d + w
 
