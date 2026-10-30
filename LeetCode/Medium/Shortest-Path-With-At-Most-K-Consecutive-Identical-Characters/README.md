@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/](https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/) |
-| Submitted | 2026-10-30T13:42:14.577Z |
+| Submitted | 2026-10-30T13:42:20.980Z |
 
 
 ## Problem Statement
@@ -100,11 +100,9 @@ class Solution:
                     continue
                 state = (v, ch, new_cnt)
                 nd = d + w
-
                 if nd < dist.get(state, float('inf')):
                     dist[state] = nd
                     heapq.heappush(pq, (nd, v, ch, new_cnt))
-
         return -1
 ```
 
