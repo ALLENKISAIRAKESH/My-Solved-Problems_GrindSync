@@ -10,10 +10,8 @@ class Solution:
             d, u, last, cnt = heapq.heappop(pq)
             if d != dist.get((u, last, cnt), float('inf')):
                 continue
-
             if u == n - 1:
                 return d
-
             for v, w in adj[u]:
                 ch = labels[v]
                 new_cnt = cnt + 1 if ch == last else 1

@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/](https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/) |
-| Submitted | 2026-10-30T13:42:06.691Z |
+| Submitted | 2026-10-30T13:42:10.595Z |
 
 
 ## Problem Statement
@@ -91,10 +91,8 @@ class Solution:
             d, u, last, cnt = heapq.heappop(pq)
             if d != dist.get((u, last, cnt), float('inf')):
                 continue
-
             if u == n - 1:
                 return d
-
             for v, w in adj[u]:
                 ch = labels[v]
                 new_cnt = cnt + 1 if ch == last else 1
