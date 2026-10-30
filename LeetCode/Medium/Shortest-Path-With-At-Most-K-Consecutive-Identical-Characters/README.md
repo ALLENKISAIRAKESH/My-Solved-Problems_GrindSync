@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/](https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/) |
-| Submitted | 2026-10-30T13:41:59.753Z |
+| Submitted | 2026-10-30T13:42:06.691Z |
 
 
 ## Problem Statement
@@ -84,15 +84,11 @@ class Solution:
         adj = [[] for _ in range(n)]
         for u, v, w in edges:
             adj[u].append((v, w))
-
-        # State: (distance, node, last character, consecutive count)
         start_count = 1
         pq = [(0, 0, labels[0], start_count)]
         dist = {(0, labels[0], start_count): 0}
-
         while pq:
             d, u, last, cnt = heapq.heappop(pq)
-
             if d != dist.get((u, last, cnt), float('inf')):
                 continue
 
