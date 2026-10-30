@@ -1,0 +1,19 @@
+class Solution:
+    def cntSubsets(self, arr: List[int], l: int, r: int) -> int:
+        MOD = 10**9 + 7
+        n = len(arr)
+        freq = [0] * (n + 1)
+        for x in arr:
+            if x <= n:
+                freq[x] += 1
+        ans = 0
+        ways = 1
+        for mex in range(n + 1):
+            if mex > 0:
+                c = freq[mex - 1]
+                if c == 0:
+                    break
+                ways = ways * (pow(2, c, MOD) - 1) % MOD
+            if l <= mex <= r:
+                ans = (ans + ways * pow(2, n - sum(freq[:mex + 1]), MOD)) % MOD
+        return ans
