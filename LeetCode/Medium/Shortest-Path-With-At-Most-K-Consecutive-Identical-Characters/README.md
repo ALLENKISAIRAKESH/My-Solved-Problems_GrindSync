@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/](https://leetcode.com/problems/shortest-path-with-at-most-k-consecutive-identical-characters/) |
-| Submitted | 2026-10-30T13:40:38.351Z |
+| Submitted | 2026-10-30T13:41:51.686Z |
 
 
 ## Problem Statement
@@ -79,8 +79,45 @@ Constraints:
 ## Solution
 
 ```tag
+from typing import List
+from collections import defaultdict
+import heapq
+
 class Solution:
     def shortestPath(self, n: int, edges: List[List[int]], labels: str, k: int) -> int:
+        adj = [[] for _ in range(n)]
+        for u, v, w in edges:
+            adj[u].append((v, w))
+
+        # State: (distance, node, last character, consecutive count)
+        start_count = 1
+        pq = [(0, 0, labels[0], start_count)]
+        dist = {(0, labels[0], start_count): 0}
+
+        while pq:
+            d, u, last, cnt = heapq.heappop(pq)
+
+            if d != dist.get((u, last, cnt), float('inf')):
+                continue
+
+            if u == n - 1:
+                return d
+
+            for v, w in adj[u]:
+                ch = labels[v]
+                new_cnt = cnt + 1 if ch == last else 1
+
+                if new_cnt > k:
+                    continue
+
+                state = (v, ch, new_cnt)
+                nd = d + w
+
+                if nd < dist.get(state, float('inf')):
+                    dist[state] = nd
+                    heapq.heappush(pq, (nd, v, ch, new_cnt))
+
+        return -1
 ```
 
 ---
