@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/twisted-mirror-path-count/](https://leetcode.com/problems/twisted-mirror-path-count/) |
-| Submitted | 2026-10-31T15:40:30.504Z |
+| Submitted | 2026-10-31T15:40:34.237Z |
 
 
 ## Problem Statement
@@ -123,7 +123,6 @@ class Solution:
                 # Try moving down
                 x, y = i + 1, j
                 direction = 1
-
                 while 0 <= x < m and 0 <= y < n and grid[x][y] == 1:
                     if direction == 0:
                         x += 1
@@ -131,7 +130,6 @@ class Solution:
                     else:
                         y += 1
                         direction = 0
-
                 if 0 <= x < m and 0 <= y < n:
                     dp[x][y] = (dp[x][y] + ways) % MOD
         return dp[m - 1][n - 1]
