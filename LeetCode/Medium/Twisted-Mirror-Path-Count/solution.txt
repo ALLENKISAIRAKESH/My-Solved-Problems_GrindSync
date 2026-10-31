@@ -16,8 +16,7 @@ class Solution:
 
                 # Try moving right
                 x, y = i, j + 1
-                direction = 0  # 0 = right, 1 = down
-
+                direction = 0  
                 while 0 <= x < m and 0 <= y < n and grid[x][y] == 1:
                     if direction == 0:
                         x += 1
