@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/twisted-mirror-path-count/](https://leetcode.com/problems/twisted-mirror-path-count/) |
-| Submitted | 2026-10-31T15:39:51.674Z |
+| Submitted | 2026-10-31T15:39:55.075Z |
 
 
 ## Problem Statement
@@ -105,8 +105,6 @@ class Solution:
                     x += 1
                 if x < m and y < n:
                     dp[x][y] = (dp[x][y] + ways) % MOD
-
-                # Try down: mirrors redirect right, repeatedly.
                 x, y = i + 1, j
                 while x < m and y < n and grid[x][y] == 1:
                     y += 1
