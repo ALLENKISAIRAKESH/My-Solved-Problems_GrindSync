@@ -43,5 +43,4 @@ class Solution:
 
                 if 0 <= x < m and 0 <= y < n:
                     dp[x][y] = (dp[x][y] + ways) % MOD
-
         return dp[m - 1][n - 1]

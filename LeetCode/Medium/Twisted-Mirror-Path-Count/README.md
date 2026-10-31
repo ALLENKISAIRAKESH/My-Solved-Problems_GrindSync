@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/twisted-mirror-path-count/](https://leetcode.com/problems/twisted-mirror-path-count/) |
-| Submitted | 2026-10-31T15:40:26.080Z |
+| Submitted | 2026-10-31T15:40:30.504Z |
 
 
 ## Problem Statement
@@ -134,7 +134,6 @@ class Solution:
 
                 if 0 <= x < m and 0 <= y < n:
                     dp[x][y] = (dp[x][y] + ways) % MOD
-
         return dp[m - 1][n - 1]
 ```
 
