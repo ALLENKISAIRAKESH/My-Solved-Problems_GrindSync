@@ -19,5 +19,4 @@ class Solution:
                     y += 1
                 if x < m and y < n:
                     dp[x][y] = (dp[x][y] + ways) % MOD
-
         return dp[m - 1][n - 1]
