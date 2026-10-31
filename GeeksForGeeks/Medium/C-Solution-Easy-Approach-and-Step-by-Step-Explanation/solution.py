@@ -1,19 +1,8 @@
 class Solution:
-    def cntSubsets(self, arr: List[int], l: int, r: int) -> int:
-        MOD = 10**9 + 7
-        n = len(arr)
-        freq = [0] * (n + 1)
-        for x in arr:
-            if x <= n:
-                freq[x] += 1
-        ans = 0
-        ways = 1
-        for mex in range(n + 1):
-            if mex > 0:
-                c = freq[mex - 1]
-                if c == 0:
-                    break
-                ways = ways * (pow(2, c, MOD) - 1) % MOD
-            if l <= mex <= r:
-                ans = (ans + ways * pow(2, n - sum(freq[:mex + 1]), MOD)) % MOD
-        return ans
+    def maxPackages(self, arr: list[int], totalTime: int) -> int:
+        window_sum = sum(arr[:totalTime])
+        max_packages = window_sum
+        for i in range(totalTime, len(arr)):
+            window_sum += arr[i] - arr[i - totalTime]
+            max_packages = max(max_packages, window_sum)
+        return max_packages

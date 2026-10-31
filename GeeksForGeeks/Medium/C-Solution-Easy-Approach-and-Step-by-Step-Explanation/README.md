@@ -4,8 +4,8 @@
 |-------|-------|
 | Platform | GeeksForGeeks |
 | Language | python3 |
-| URL | [https://www.geeksforgeeks.org/problems/crazy-subsets--131708/1](https://www.geeksforgeeks.org/problems/crazy-subsets--131708/1) |
-| Submitted | 2026-10-30T13:51:11.993Z |
+| URL | [https://www.geeksforgeeks.org/problems/bird-and-maximum-fruit-gathering0509/1](https://www.geeksforgeeks.org/problems/bird-and-maximum-fruit-gathering0509/1) |
+| Submitted | 2026-10-31T15:43:31.352Z |
 
 
 ## Problem Statement
@@ -16,24 +16,13 @@ MenuBack to Explore Page
 
 ```python
 class Solution:
-    def cntSubsets(self, arr: List[int], l: int, r: int) -> int:
-        MOD = 10**9 + 7
-        n = len(arr)
-        freq = [0] * (n + 1)
-        for x in arr:
-            if x <= n:
-                freq[x] += 1
-        ans = 0
-        ways = 1
-        for mex in range(n + 1):
-            if mex > 0:
-                c = freq[mex - 1]
-                if c == 0:
-                    break
-                ways = ways * (pow(2, c, MOD) - 1) % MOD
-            if l <= mex <= r:
-                ans = (ans + ways * pow(2, n - sum(freq[:mex + 1]), MOD)) % MOD
-        return ans
+    def maxPackages(self, arr: list[int], totalTime: int) -> int:
+        window_sum = sum(arr[:totalTime])
+        max_packages = window_sum
+        for i in range(totalTime, len(arr)):
+            window_sum += arr[i] - arr[i - totalTime]
+            max_packages = max(max_packages, window_sum)
+        return max_packages
 ```
 
 ---
