@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/twisted-mirror-path-count/](https://leetcode.com/problems/twisted-mirror-path-count/) |
-| Submitted | 2026-10-31T15:40:46.316Z |
+| Submitted | 2026-10-31T15:40:49.984Z |
 
 
 ## Problem Statement
@@ -95,10 +95,8 @@ class Solution:
     def uniquePaths(self, grid: List[List[int]]) -> int:
         MOD = 10**9 + 7
         m, n = len(grid), len(grid[0])
-
         dp = [[0] * n for _ in range(m)]
         dp[0][0] = 1
-
         for i in range(m):
             for j in range(n):
                 ways = dp[i][j]
