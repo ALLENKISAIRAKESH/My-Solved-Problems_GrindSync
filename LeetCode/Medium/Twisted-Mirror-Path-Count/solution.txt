@@ -9,8 +9,6 @@ class Solution:
                 ways = dp[i][j]
                 if ways == 0 or (i == m - 1 and j == n - 1):
                     continue
-
-                # Try right: mirrors redirect down, repeatedly.
                 x, y = i, j + 1
                 while x < m and y < n and grid[x][y] == 1:
                     x += 1
