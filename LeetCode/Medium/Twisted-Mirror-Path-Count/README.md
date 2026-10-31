@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/twisted-mirror-path-count/](https://leetcode.com/problems/twisted-mirror-path-count/) |
-| Submitted | 2026-10-31T15:39:43.969Z |
+| Submitted | 2026-10-31T15:39:48.050Z |
 
 
 ## Problem Statement
@@ -95,7 +95,6 @@ class Solution:
         m, n = len(grid), len(grid[0])
         dp = [[0] * n for _ in range(m)]
         dp[0][0] = 1
-
         for i in range(m):
             for j in range(n):
                 ways = dp[i][j]
