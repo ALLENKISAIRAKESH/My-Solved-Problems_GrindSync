@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/twisted-mirror-path-count/](https://leetcode.com/problems/twisted-mirror-path-count/) |
-| Submitted | 2026-10-31T15:40:49.984Z |
+| Submitted | 2026-10-31T15:40:54.189Z |
 
 
 ## Problem Statement
@@ -89,8 +89,6 @@ Constraints:
 ## Solution
 
 ```tag
-from typing import List
-
 class Solution:
     def uniquePaths(self, grid: List[List[int]]) -> int:
         MOD = 10**9 + 7
