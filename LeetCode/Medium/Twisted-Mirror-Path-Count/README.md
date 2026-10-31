@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/twisted-mirror-path-count/](https://leetcode.com/problems/twisted-mirror-path-count/) |
-| Submitted | 2026-10-31T15:40:00.697Z |
+| Submitted | 2026-10-31T15:40:26.080Z |
 
 
 ## Problem Statement
@@ -89,27 +89,52 @@ Constraints:
 ## Solution
 
 ```tag
+from typing import List
+
 class Solution:
     def uniquePaths(self, grid: List[List[int]]) -> int:
         MOD = 10**9 + 7
         m, n = len(grid), len(grid[0])
+
         dp = [[0] * n for _ in range(m)]
         dp[0][0] = 1
+
         for i in range(m):
             for j in range(n):
                 ways = dp[i][j]
                 if ways == 0 or (i == m - 1 and j == n - 1):
                     continue
+
+                # Try moving right
                 x, y = i, j + 1
-                while x < m and y < n and grid[x][y] == 1:
-                    x += 1
-                if x < m and y < n:
+                direction = 0  # 0 = right, 1 = down
+
+                while 0 <= x < m and 0 <= y < n and grid[x][y] == 1:
+                    if direction == 0:
+                        x += 1
+                        direction = 1
+                    else:
+                        y += 1
+                        direction = 0
+
+                if 0 <= x < m and 0 <= y < n:
                     dp[x][y] = (dp[x][y] + ways) % MOD
+
+                # Try moving down
                 x, y = i + 1, j
-                while x < m and y < n and grid[x][y] == 1:
-                    y += 1
-                if x < m and y < n:
+                direction = 1
+
+                while 0 <= x < m and 0 <= y < n and grid[x][y] == 1:
+                    if direction == 0:
+                        x += 1
+                        direction = 1
+                    else:
+                        y += 1
+                        direction = 0
+
+                if 0 <= x < m and 0 <= y < n:
                     dp[x][y] = (dp[x][y] + ways) % MOD
+
         return dp[m - 1][n - 1]
 ```
 
