@@ -1,8 +1,8 @@
 class Solution:
     def minMoves2(self, nums: list[int]) -> int:
         nums.sort()
-        median = nums[len(nums) // 2]
+        me = nums[len(nums) // 2]
         m = 0
         for num in nums:
-            m += abs(num - median)
+            m += abs(num - me)
         return m
