@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-ii/) |
-| Submitted | 2026-11-02T13:33:56.712Z |
+| Submitted | 2026-11-02T13:34:02.766Z |
 
 
 ## Problem Statement
@@ -50,8 +50,8 @@ class Solution:
         median = nums[len(nums) // 2]
         m = 0
         for num in nums:
-            moves += abs(num - median)
-        return moves
+            m += abs(num - median)
+        return m
 ```
 
 ---

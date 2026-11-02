@@ -4,5 +4,5 @@ class Solution:
         median = nums[len(nums) // 2]
         m = 0
         for num in nums:
-            moves += abs(num - median)
-        return moves
+            m += abs(num - median)
+        return m
