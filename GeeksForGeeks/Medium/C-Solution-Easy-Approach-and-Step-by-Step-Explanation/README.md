@@ -4,8 +4,8 @@
 |-------|-------|
 | Platform | GeeksForGeeks |
 | Language | python3 |
-| URL | [https://www.geeksforgeeks.org/problems/bird-and-maximum-fruit-gathering0509/1](https://www.geeksforgeeks.org/problems/bird-and-maximum-fruit-gathering0509/1) |
-| Submitted | 2026-10-31T15:43:31.352Z |
+| URL | [https://www.geeksforgeeks.org/problems/largest-sum-cycle--170645/1](https://www.geeksforgeeks.org/problems/largest-sum-cycle--170645/1) |
+| Submitted | 2026-11-02T13:37:00.626Z |
 
 
 ## Problem Statement
@@ -16,13 +16,32 @@ MenuBack to Explore Page
 
 ```python
 class Solution:
-    def maxPackages(self, arr: list[int], totalTime: int) -> int:
-        window_sum = sum(arr[:totalTime])
-        max_packages = window_sum
-        for i in range(totalTime, len(arr)):
-            window_sum += arr[i] - arr[i - totalTime]
-            max_packages = max(max_packages, window_sum)
-        return max_packages
+    def largestSumCycle(self, edge):
+        # code here
+        n = len(edge)
+        visited = [False] * n
+        max_sum = -1
+        for i in range(n):
+            if visited[i]:
+                continue
+            curr = i
+            path = {}
+            path_sum = 0
+            while curr != -1 and not visited[curr]:
+                visited[curr] = True
+                path[curr] = path_sum
+                path_sum += curr
+                curr = edge[curr]
+            if curr != -1 and curr in path:
+                cycle_sum = 0
+                node = curr
+                while True:
+                    cycle_sum += node
+                    node = edge[node]
+                    if node == curr:
+                        break
+                max_sum = max(max_sum, cycle_sum)
+        return max_sum
 ```
 
 ---
