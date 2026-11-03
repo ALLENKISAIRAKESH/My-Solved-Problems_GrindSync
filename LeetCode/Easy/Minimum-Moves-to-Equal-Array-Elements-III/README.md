@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | tag |
 | URL | [https://leetcode.com/problems/minimum-moves-to-equal-array-elements-iii/](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-iii/) |
-| Submitted | 2026-11-03T13:11:20.567Z |
+| Submitted | 2026-11-03T13:11:27.360Z |
 
 
 ## Problem Statement
@@ -72,7 +72,8 @@ class Solution:
         maximum=max(nums)
         m=0
         for num in nums:
-            m+= maximum -mums
+            m+= maximum -num
+        return
 ```
 
 ---
