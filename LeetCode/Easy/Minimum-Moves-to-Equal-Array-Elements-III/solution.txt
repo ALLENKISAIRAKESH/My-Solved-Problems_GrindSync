@@ -3,4 +3,4 @@ class Solution:
         maximum=max(nums)
         m=0
         for num in nums:
-            m
+            m+= maximun
