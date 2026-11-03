@@ -2,4 +2,5 @@ class Solution:
     def minMoves(self, nums: List[int]) -> int:
         maximum=max(nums)
         m=0
-        for num in n
+        for num in nums:
+            m
