@@ -4,4 +4,4 @@ class Solution:
         m=0
         for num in nums:
             m+= maximum -num
-        return
+        return m
