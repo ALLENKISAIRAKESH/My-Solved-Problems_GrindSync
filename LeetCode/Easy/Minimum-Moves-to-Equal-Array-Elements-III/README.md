@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | tag |
 | URL | [https://leetcode.com/problems/minimum-moves-to-equal-array-elements-iii/](https://leetcode.com/problems/minimum-moves-to-equal-array-elements-iii/) |
-| Submitted | 2026-11-03T13:10:28.018Z |
+| Submitted | 2026-11-03T13:10:33.618Z |
 
 
 ## Problem Statement
@@ -71,6 +71,7 @@ class Solution:
     def minMoves(self, nums: List[int]) -> int:
         maximum=max(nums)
         m=0
+        for
 ```
 
 ---
