@@ -23,10 +23,8 @@ class Solution:
             else:
                 sum_right -= v
                 delayed_right[v] = delayed_right.get(v, 0) + 1
-
             prune()
             balance()
-
         delayed_left = {}
         delayed_right = {}
 

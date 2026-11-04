@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/](https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/) |
-| Submitted | 2026-11-04T07:21:06.603Z |
+| Submitted | 2026-11-04T07:21:12.184Z |
 
 
 ## Problem Statement
@@ -89,10 +89,8 @@ class Solution:
             else:
                 sum_right -= v
                 delayed_right[v] = delayed_right.get(v, 0) + 1
-
             prune()
             balance()
-
         delayed_left = {}
         delayed_right = {}
 
