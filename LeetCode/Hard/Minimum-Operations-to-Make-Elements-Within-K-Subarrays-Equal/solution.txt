@@ -27,52 +27,40 @@ class Solution:
             balance()
         delayed_left = {}
         delayed_right = {}
-
         def prune():
             while left and delayed_left.get(-left[0], 0):
                 v = -heappop(left)
                 delayed_left[v] -= 1
-
             while right and delayed_right.get(right[0], 0):
                 v = heappop(right)
                 delayed_right[v] -= 1
-
         def balance():
             nonlocal sum_left, sum_right
-
             prune()
-
             while len(left) > len(right) + 1:
                 v = -heappop(left)
                 sum_left -= v
                 heappush(right, v)
                 sum_right += v
                 prune()
-
             while len(left) < len(right):
                 v = heappop(right)
                 sum_right -= v
                 heappush(left, -v)
                 sum_left += v
                 prune()
-
         costs = [0] * (n - x + 1)
-
         for i in range(n):
             add(nums[i])
-
             if i >= x:
                 remove(nums[i - x])
-
             if i >= x - 1:
                 prune()
                 median = -left[0]
                 costs[i - x + 1] = (
                     median * len(left) - sum_left
                     + sum_right - median * len(right)
-                )
-
-        # DP
+        
         prev = [0] * (n + 1)
 
         for j in range(1, k + 1):
