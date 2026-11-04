@@ -17,7 +17,6 @@ class Solution:
             balance()
         def remove(v):
             nonlocal sum_left, sum_right
-            # Lazy deletion using heaps
             if v <= -left[0]:
                 sum_left -= v
                 delayed_left[v] = delayed_left.get(v, 0) + 1

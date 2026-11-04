@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/](https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/) |
-| Submitted | 2026-11-04T07:21:02.208Z |
+| Submitted | 2026-11-04T07:21:06.603Z |
 
 
 ## Problem Statement
@@ -83,7 +83,6 @@ class Solution:
             balance()
         def remove(v):
             nonlocal sum_left, sum_right
-            # Lazy deletion using heaps
             if v <= -left[0]:
                 sum_left -= v
                 delayed_left[v] = delayed_left.get(v, 0) + 1
