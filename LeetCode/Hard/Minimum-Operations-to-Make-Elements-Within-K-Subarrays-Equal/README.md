@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/](https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/) |
-| Submitted | 2026-11-04T07:21:35.542Z |
+| Submitted | 2026-11-04T07:21:48.243Z |
 
 
 ## Problem Statement
@@ -126,23 +126,18 @@ class Solution:
                 costs[i - x + 1] = (
                     median * len(left) - sum_left
                     + sum_right - median * len(right)
-        
+                )
         prev = [0] * (n + 1)
-
         for j in range(1, k + 1):
             curr = [INF] * (n + 1)
-
             for i in range(1, n + 1):
                 curr[i] = curr[i - 1]
-
                 if i >= x:
                     curr[i] = min(
                         curr[i],
                         prev[i - x] + costs[i - x]
                     )
-
             prev = curr
-
         return prev[n]
 ```
 
