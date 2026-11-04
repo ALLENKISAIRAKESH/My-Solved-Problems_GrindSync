@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/](https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/) |
-| Submitted | 2026-11-04T07:22:25.735Z |
+| Submitted | 2026-11-04T07:23:23.653Z |
 
 
 ## Problem Statement
@@ -64,35 +64,123 @@ Constraints:
 ## Solution
 
 ```tag
+from typing import List
+import heapq
+from collections import defaultdict
+
 class Solution:
     def minOperations(self, nums: List[int], x: int, k: int) -> int:
         n = len(nums)
 
-        window = SortedList()
-        total = 0
+        small = []  # Max heap (negative values)
+        large = []  # Min heap
+
+        delayed = defaultdict(int)
+
+        small_size = 0
+        large_size = 0
+
+        sum_small = 0
+        sum_large = 0
+
+        def prune(heap, is_small):
+            while heap:
+                val = -heap[0] if is_small else heap[0]
+
+                if delayed[val] == 0:
+                    break
+
+                delayed[val] -= 1
+                heapq.heappop(heap)
+
+        def balance():
+            nonlocal small_size, large_size
+            nonlocal sum_small, sum_large
+
+            prune(small, True)
+            prune(large, False)
+
+            while small_size > large_size + 1:
+                v = -heapq.heappop(small)
+                sum_small -= v
+                small_size -= 1
+
+                heapq.heappush(large, v)
+                sum_large += v
+                large_size += 1
+
+                prune(small, True)
+
+            while small_size < large_size:
+                v = heapq.heappop(large)
+                sum_large -= v
+                large_size -= 1
+
+                heapq.heappush(small, -v)
+                sum_small += v
+                small_size += 1
+
+                prune(large, False)
+
+        def add(v):
+            nonlocal small_size, large_size
+            nonlocal sum_small, sum_large
+
+            prune(small, True)
+
+            if not small or v <= -small[0]:
+                heapq.heappush(small, -v)
+                small_size += 1
+                sum_small += v
+            else:
+                heapq.heappush(large, v)
+                large_size += 1
+                sum_large += v
+
+            balance()
+
+        def remove(v):
+            nonlocal small_size, large_size
+            nonlocal sum_small, sum_large
+
+            prune(small, True)
+
+            delayed[v] += 1
+
+            if v <= -small[0]:
+                small_size -= 1
+                sum_small -= v
+
+                if v == -small[0]:
+                    prune(small, True)
+            else:
+                large_size -= 1
+                sum_large -= v
+
+                if large and v == large[0]:
+                    prune(large, False)
+
+            balance()
+
         costs = [0] * (n - x + 1)
 
-        for i, v in enumerate(nums):
-            window.add(v)
-            total += v
+        for i in range(n):
+            add(nums[i])
 
             if i >= x:
-                old = nums[i - x]
-                window.remove(old)
-                total -= old
+                remove(nums[i - x])
 
             if i >= x - 1:
-                m = window[x // 2]
-                left_sum = sum(window[:x // 2])
-                right_sum = sum(window[x // 2 + 1:])
+                median = -small[0]
 
                 costs[i - x + 1] = (
-                    m * (x // 2) - left_sum
-                    + right_sum - m * (x - x // 2 - 1)
+                    median * small_size - sum_small
+                    + sum_large - median * large_size
                 )
 
-        prev = [0] * (n + 1)
+        # Dynamic Programming
         INF = float('inf')
+        prev = [0] * (n + 1)
 
         for j in range(1, k + 1):
             curr = [INF] * (n + 1)
