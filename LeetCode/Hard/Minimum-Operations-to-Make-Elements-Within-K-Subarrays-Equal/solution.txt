@@ -14,12 +14,9 @@ class Solution:
             else:
                 heappush(right, v)
                 sum_right += v
-
             balance()
-
         def remove(v):
             nonlocal sum_left, sum_right
-
             # Lazy deletion using heaps
             if v <= -left[0]:
                 sum_left -= v
