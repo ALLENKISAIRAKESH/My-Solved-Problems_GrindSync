@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/](https://leetcode.com/problems/minimum-operations-to-make-elements-within-k-subarrays-equal/) |
-| Submitted | 2026-11-04T07:20:45.119Z |
+| Submitted | 2026-11-04T07:20:49.532Z |
 
 
 ## Problem Statement
@@ -64,9 +64,6 @@ Constraints:
 ## Solution
 
 ```tag
-from typing import List
-from heapq import heappush, heappop
-
 class Solution:
     def minOperations(self, nums: List[int], x: int, k: int) -> int:
         n = len(nums)
