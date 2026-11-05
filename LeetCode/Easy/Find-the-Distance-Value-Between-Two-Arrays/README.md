@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | tag |
 | URL | [https://leetcode.com/problems/find-the-distance-value-between-two-arrays/](https://leetcode.com/problems/find-the-distance-value-between-two-arrays/) |
-| Submitted | 2026-11-05T11:33:37.923Z |
+| Submitted | 2026-11-05T11:33:41.780Z |
 
 
 ## Problem Statement
@@ -74,9 +74,9 @@ class Solution:
                     break
 
             if valid:
-                count += 1
+                c += 1
 
-        return count
+        return c
 ```
 
 ---

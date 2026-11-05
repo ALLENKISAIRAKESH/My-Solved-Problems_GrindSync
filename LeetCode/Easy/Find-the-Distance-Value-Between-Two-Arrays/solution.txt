@@ -11,6 +11,6 @@ class Solution:
                     break
 
             if valid:
-                count += 1
+                c += 1
 
-        return count
+        return c
