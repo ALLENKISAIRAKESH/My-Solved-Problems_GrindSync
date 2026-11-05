@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | tag |
 | URL | [https://leetcode.com/problems/find-the-distance-value-between-two-arrays/](https://leetcode.com/problems/find-the-distance-value-between-two-arrays/) |
-| Submitted | 2026-11-05T11:33:45.761Z |
+| Submitted | 2026-11-05T11:33:49.503Z |
 
 
 ## Problem Statement
@@ -64,8 +64,7 @@ Constraints:
 class Solution:
     def findTheDistanceValue(self, arr1: list[int], arr2: list[int], d: int) -> int:
         c = 0
-
-        for  in arr1:
+        for i in arr1:
             valid = True
             for j in arr2:
                 if abs(i - j) <= d:
