@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/process-tasks-using-servers/](https://leetcode.com/problems/process-tasks-using-servers/) |
-| Submitted | 2026-11-07T14:57:28.602Z |
+| Submitted | 2026-11-07T14:57:34.741Z |
 
 
 ## Problem Statement
@@ -77,13 +77,9 @@ class Solution:
 
         for j in range(len(tasks)):
             time = max(time, j)
-
-            # Release all servers that are free
             while busy and busy[0][0] <= time:
                 end, weight, idx = heapq.heappop(busy)
                 heapq.heappush(free, (weight, idx))
-
-            # Wait the earliest server becomes free
             if not free:
                 time = busy[0][0]
                 while busy and busy[0][0] <= time:
