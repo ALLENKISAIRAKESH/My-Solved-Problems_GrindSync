@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/process-tasks-using-servers/](https://leetcode.com/problems/process-tasks-using-servers/) |
-| Submitted | 2026-11-07T14:57:40.170Z |
+| Submitted | 2026-11-07T14:57:44.893Z |
 
 
 ## Problem Statement
@@ -64,8 +64,6 @@ Constraints:
 ## Solution
 
 ```tag
-import heapq
-
 class Solution:
     def assignTasks(self, servers: list[int], tasks: list[int]) -> list[int]:
         free = [(weight, i) for i, weight in enumerate(servers)]
