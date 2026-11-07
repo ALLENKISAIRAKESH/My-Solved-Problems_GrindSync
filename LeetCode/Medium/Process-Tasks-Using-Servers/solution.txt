@@ -10,9 +10,7 @@ class Solution:
 
         busy = []
         ans = [0] * m
-
         for j in range(m):
-            # Release servers that have completed their tasks
             while busy and busy[0][0] <= j:
                 time, weight, idx = heapq.heappop(busy)
                 heapq.heappush(free, (weight, idx))

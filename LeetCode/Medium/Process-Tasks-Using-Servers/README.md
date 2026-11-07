@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/process-tasks-using-servers/](https://leetcode.com/problems/process-tasks-using-servers/) |
-| Submitted | 2026-11-07T14:56:34.169Z |
+| Submitted | 2026-11-07T14:56:39.113Z |
 
 
 ## Problem Statement
@@ -76,9 +76,7 @@ class Solution:
 
         busy = []
         ans = [0] * m
-
         for j in range(m):
-            # Release servers that have completed their tasks
             while busy and busy[0][0] <= j:
                 time, weight, idx = heapq.heappop(busy)
                 heapq.heappush(free, (weight, idx))
