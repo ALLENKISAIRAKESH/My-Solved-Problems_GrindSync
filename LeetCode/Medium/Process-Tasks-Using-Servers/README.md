@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/process-tasks-using-servers/](https://leetcode.com/problems/process-tasks-using-servers/) |
-| Submitted | 2026-11-07T14:57:17.115Z |
+| Submitted | 2026-11-07T14:57:23.556Z |
 
 
 ## Problem Statement
@@ -90,16 +90,12 @@ class Solution:
                 while busy and busy[0][0] <= time:
                     end, weight, idx = heapq.heappop(busy)
                     heapq.heappush(free, (weight, idx))
-
-            # Assign the current task
             weight, idx = heapq.heappop(free)
             ans.append(idx)
-
             heapq.heappush(
                 busy,
                 (time + tasks[j], weight, idx)
             )
-
         return ans
 ```
 
