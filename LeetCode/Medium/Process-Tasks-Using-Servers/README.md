@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/process-tasks-using-servers/](https://leetcode.com/problems/process-tasks-using-servers/) |
-| Submitted | 2026-11-07T14:55:32.942Z |
+| Submitted | 2026-11-07T14:56:21.829Z |
 
 
 ## Problem Statement
@@ -64,8 +64,40 @@ Constraints:
 ## Solution
 
 ```tag
+import heapq
+
 class Solution:
     def assignTasks(self, servers: list[int], tasks: list[int]) -> list[int]:
+        n = len(servers)
+        m = len(tasks)
+
+        free = [(servers[i], i) for i in range(n)]
+        heapq.heapify(free)
+
+        busy = []
+        ans = [0] * m
+
+        for j in range(m):
+            # Release servers that have completed their tasks
+            while busy and busy[0][0] <= j:
+                time, weight, idx = heapq.heappop(busy)
+                heapq.heappush(free, (weight, idx))
+
+            # If no server is free, wait for the earliest one
+            if not free:
+                time = busy[0][0]
+
+                while busy and busy[0][0] == time:
+                    t, weight, idx = heapq.heappop(busy)
+                    heapq.heappush(free, (weight, idx))
+
+            # Assign the task to the best available server
+            weight, idx = heapq.heappop(free)
+            ans[j] = idx
+
+            heapq.heappush(busy, (j + tasks[j], weight, idx))
+
+        return ans
 ```
 
 ---
