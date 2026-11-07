@@ -1,13 +1,9 @@
-import heapq
-
 class Solution:
     def assignTasks(self, servers: list[int], tasks: list[int]) -> list[int]:
         n = len(servers)
         m = len(tasks)
-
         free = [(servers[i], i) for i in range(n)]
         heapq.heapify(free)
-
         busy = []
         ans = [0] * m
         for j in range(m):
