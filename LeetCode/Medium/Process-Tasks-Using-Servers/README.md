@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/process-tasks-using-servers/](https://leetcode.com/problems/process-tasks-using-servers/) |
-| Submitted | 2026-11-07T14:57:34.741Z |
+| Submitted | 2026-11-07T14:57:40.170Z |
 
 
 ## Problem Statement
@@ -70,11 +70,9 @@ class Solution:
     def assignTasks(self, servers: list[int], tasks: list[int]) -> list[int]:
         free = [(weight, i) for i, weight in enumerate(servers)]
         heapq.heapify(free)
-
         busy = []
         ans = []
         time = 0
-
         for j in range(len(tasks)):
             time = max(time, j)
             while busy and busy[0][0] <= time:
