@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/process-tasks-using-servers/](https://leetcode.com/problems/process-tasks-using-servers/) |
-| Submitted | 2026-11-07T14:56:29.385Z |
+| Submitted | 2026-11-07T14:56:34.169Z |
 
 
 ## Problem Statement
@@ -82,8 +82,6 @@ class Solution:
             while busy and busy[0][0] <= j:
                 time, weight, idx = heapq.heappop(busy)
                 heapq.heappush(free, (weight, idx))
-
-            # If no server is free, wait for the earliest one
             if not free:
                 time = busy[0][0]
                 while busy and busy[0][0] == time:
