@@ -4,8 +4,8 @@
 |-------|-------|
 | Platform | GeeksForGeeks |
 | Language | python3 |
-| URL | [https://www.geeksforgeeks.org/problems/game-of-xor1541/1](https://www.geeksforgeeks.org/problems/game-of-xor1541/1) |
-| Submitted | 2026-11-04T07:24:27.730Z |
+| URL | [https://www.geeksforgeeks.org/problems/new-registration-system--150419/1](https://www.geeksforgeeks.org/problems/new-registration-system--150419/1) |
+| Submitted | 2026-11-07T14:59:09.471Z |
 
 
 ## Problem Statement
@@ -16,17 +16,22 @@ MenuBack to Explore Page
 
 ```python
 class Solution:
-    def subarrayXor(self, arr):
-        n = len(arr)
-
-        if n % 2 == 0:
-            return 0
-
-        ans = 0
-
-        for i in range(0, n, 2):
-            ans ^= arr[i]
-
+    def generateUsernames(self, arr: list[str]) -> list[str]:
+        used = set(arr)
+        count = {}
+        ans = []
+        for name in arr:
+            if name not in count:
+                ans.append(name)
+                count[name] = 1
+            else:
+                k = count[name]
+                while name + str(k) in used:
+                    k += 1
+                new_name = name + str(k)
+                ans.append(new_name)
+                used.add(new_name)
+                count[name] = k + 1
         return ans
 ```
 
