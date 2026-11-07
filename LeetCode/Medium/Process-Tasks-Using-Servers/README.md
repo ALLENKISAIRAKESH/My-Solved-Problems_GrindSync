@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/process-tasks-using-servers/](https://leetcode.com/problems/process-tasks-using-servers/) |
-| Submitted | 2026-11-07T14:56:21.829Z |
+| Submitted | 2026-11-07T14:56:25.350Z |
 
 
 ## Problem Statement
@@ -94,9 +94,7 @@ class Solution:
             # Assign the task to the best available server
             weight, idx = heapq.heappop(free)
             ans[j] = idx
-
             heapq.heappush(busy, (j + tasks[j], weight, idx))
-
         return ans
 ```
 
