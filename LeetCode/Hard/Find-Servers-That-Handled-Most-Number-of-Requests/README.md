@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/](https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/) |
-| Submitted | 2026-11-09T06:08:25.384Z |
+| Submitted | 2026-11-09T06:08:58.026Z |
 
 
 ## Problem Statement
@@ -67,8 +67,39 @@ Constraints:
 ## Solution
 
 ```tag
+import heapq
+from sortedcontainers import SortedList
+
 class Solution:
     def busiestServers(self, k: int, arrival: list[int], load: list[int]) -> list[int]:
+        available = SortedList(range(k))
+        busy = []
+        count = [0] * k
+
+        for i in range(len(arrival)):
+            # Release servers whose requests are completed
+            while busy and busy[0][0] <= arrival[i]:
+                end_time, server = heapq.heappop(busy)
+                available.add(server)
+
+            if not available:
+                continue
+
+            # Find the first available server >= i % k
+            pos = available.bisect_left(i % k)
+
+            if pos == len(available):
+                pos = 0
+
+            server = available.pop(pos)
+
+            # Assign request
+            count[server] += 1
+            heapq.heappush(busy, (arrival[i] + load[i], server))
+
+        max_requests = max(count)
+
+        return [i for i in range(k) if count[i] == max_requests]
 ```
 
 ---
