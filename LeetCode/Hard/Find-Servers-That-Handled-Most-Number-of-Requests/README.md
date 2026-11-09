@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/](https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/) |
-| Submitted | 2026-11-09T06:09:09.830Z |
+| Submitted | 2026-11-09T06:09:14.520Z |
 
 
 ## Problem Statement
@@ -81,15 +81,10 @@ class Solution:
             pos = available.bisect_left(i % k)
             if pos == len(available):
                 pos = 0
-
             server = available.pop(pos)
-
-            # Assign request
             count[server] += 1
             heapq.heappush(busy, (arrival[i] + load[i], server))
-
         max_requests = max(count)
-
         return [i for i in range(k) if count[i] == max_requests]
 ```
 
