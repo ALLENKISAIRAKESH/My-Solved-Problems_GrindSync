@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | tag |
 | URL | [https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/](https://leetcode.com/problems/find-servers-that-handled-most-number-of-requests/) |
-| Submitted | 2026-11-09T06:09:02.837Z |
+| Submitted | 2026-11-09T06:09:09.830Z |
 
 
 ## Problem Statement
@@ -72,19 +72,13 @@ class Solution:
         available = SortedList(range(k))
         busy = []
         count = [0] * k
-
         for i in range(len(arrival)):
-            # Release servers whose requests are completed
             while busy and busy[0][0] <= arrival[i]:
                 end_time, server = heapq.heappop(busy)
                 available.add(server)
-
             if not available:
                 continue
-
-            # Find the first available server >= i % k
             pos = available.bisect_left(i % k)
-
             if pos == len(available):
                 pos = 0
 
