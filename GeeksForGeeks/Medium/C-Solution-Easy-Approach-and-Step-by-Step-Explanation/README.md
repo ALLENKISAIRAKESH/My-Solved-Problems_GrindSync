@@ -5,7 +5,7 @@
 | Platform | GeeksForGeeks |
 | Language | python3 |
 | URL | [https://www.geeksforgeeks.org/problems/count-the-characters1821/1](https://www.geeksforgeeks.org/problems/count-the-characters1821/1) |
-| Submitted | 2026-11-09T06:10:01.260Z |
+| Submitted | 2026-11-09T06:10:14.348Z |
 
 
 ## Problem Statement
@@ -18,11 +18,9 @@ MenuBack to Explore Page
 class Solution:
     def getCount(self, s, k):
         freq = [0] * 26
-
         for i in range(len(s)):
             if i == 0 or s[i] != s[i - 1]:
                 freq[ord(s[i]) - ord('a')] += 1
-
         return sum(1 for x in freq if x == k)
 ```
 
