@@ -4,8 +4,8 @@
 |-------|-------|
 | Platform | GeeksForGeeks |
 | Language | python3 |
-| URL | [https://www.geeksforgeeks.org/problems/new-registration-system--150419/1](https://www.geeksforgeeks.org/problems/new-registration-system--150419/1) |
-| Submitted | 2026-11-07T14:59:09.471Z |
+| URL | [https://www.geeksforgeeks.org/problems/count-the-characters1821/1](https://www.geeksforgeeks.org/problems/count-the-characters1821/1) |
+| Submitted | 2026-11-09T06:10:01.260Z |
 
 
 ## Problem Statement
@@ -16,23 +16,14 @@ MenuBack to Explore Page
 
 ```python
 class Solution:
-    def generateUsernames(self, arr: list[str]) -> list[str]:
-        used = set(arr)
-        count = {}
-        ans = []
-        for name in arr:
-            if name not in count:
-                ans.append(name)
-                count[name] = 1
-            else:
-                k = count[name]
-                while name + str(k) in used:
-                    k += 1
-                new_name = name + str(k)
-                ans.append(new_name)
-                used.add(new_name)
-                count[name] = k + 1
-        return ans
+    def getCount(self, s, k):
+        freq = [0] * 26
+
+        for i in range(len(s)):
+            if i == 0 or s[i] != s[i - 1]:
+                freq[ord(s[i]) - ord('a')] += 1
+
+        return sum(1 for x in freq if x == k)
 ```
 
 ---
