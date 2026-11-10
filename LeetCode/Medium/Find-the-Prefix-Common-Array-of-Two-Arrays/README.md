@@ -4,9 +4,9 @@
 |-------|-------|
 | Platform | LeetCode |
 | Difficulty | Medium |
-| Language | python3 |
+| Language | original |
 | URL | [https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/](https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/) |
-| Submitted | 2026-10-20T09:05:32.156Z |
+| Submitted | 2026-11-10T14:34:12.843Z |
 
 
 ## Problem Statement
@@ -20,7 +20,7 @@ Return the prefix common array of A and B.
 A sequence of n integers is called a permutation if it contains all integers from 1 to n exactly once.
 
  
-Example 1:
+OriginalPython3Example 1:
 
 Input: A = [1,3,2,4], B = [3,1,2,4]
 Output: [0,2,3,4]
@@ -49,7 +49,7 @@ Constraints:
 
 ## Solution
 
-```python
+```original
 class Solution:
     def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
         n = len(A)
