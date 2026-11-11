@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/minimum-cost-to-acquire-required-items/](https://leetcode.com/problems/minimum-cost-to-acquire-required-items/) |
-| Submitted | 2026-11-11T15:54:38.143Z |
+| Submitted | 2026-11-11T15:54:42.099Z |
 
 
 ## Problem Statement
@@ -82,7 +82,6 @@ class Solution:
         remaining2 = need2 - both
         cost += remaining1 * cost1
         cost += remaining2 * cost2
-
         return cost
 ```
 

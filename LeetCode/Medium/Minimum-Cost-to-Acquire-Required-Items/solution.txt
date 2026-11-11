@@ -6,5 +6,4 @@ class Solution:
         remaining2 = need2 - both
         cost += remaining1 * cost1
         cost += remaining2 * cost2
-
         return cost
