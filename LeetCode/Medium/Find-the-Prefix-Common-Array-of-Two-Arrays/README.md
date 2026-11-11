@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/](https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/) |
-| Submitted | 2026-11-10T14:34:12.843Z |
+| Submitted | 2026-11-11T15:52:32.347Z |
 
 
 ## Problem Statement
@@ -52,23 +52,6 @@ Constraints:
 ```original
 class Solution:
     def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
-        n = len(A)
-        freq = [0] * (n + 1)
-        ans = []
-        common = 0
-
-        for i in range(n):
-            freq[A[i]] += 1
-            if freq[A[i]] == 2:
-                common += 1
-
-            freq[B[i]] += 1
-            if freq[B[i]] == 2:
-                common += 1
-
-            ans.append(common)
-
-        return ans
 ```
 
 ---
