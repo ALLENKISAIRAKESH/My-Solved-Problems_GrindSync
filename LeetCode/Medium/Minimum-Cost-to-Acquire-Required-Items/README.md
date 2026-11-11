@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/minimum-cost-to-acquire-required-items/](https://leetcode.com/problems/minimum-cost-to-acquire-required-items/) |
-| Submitted | 2026-11-11T15:53:58.074Z |
+| Submitted | 2026-11-11T15:54:29.819Z |
 
 
 ## Problem Statement
@@ -76,6 +76,20 @@ Constraints:
 ```original
 class Solution:
     def minimumCost(self, cost1: int, cost2: int, costBoth: int, need1: int, need2: int) -> int:
+        both = min(need1, need2)
+
+        # Buy common items for both requirements
+        cost = both * min(costBoth, cost1 + cost2)
+
+        # Calculate remaining requirements
+        remaining1 = need1 - both
+        remaining2 = need2 - both
+
+        # Buy remaining individual items
+        cost += remaining1 * cost1
+        cost += remaining2 * cost2
+
+        return cost
 ```
 
 ---
