@@ -1,0 +1,51 @@
+class Solution:
+    def countNonDecreasingSubarrays(self, nums: List[int], k: int) -> int:
+        n = len(nums)
+        ng = [n] * n
+        st = []
+        for i in range(n - 1, -1, -1):
+            while st and nums[st[-1]] <= nums[i]:
+                st.pop()
+            ng[i] = st[-1] if st else n
+            st.append(i)
+        pref = [0] * (n + 1)
+        for i in range(n):
+            pref[i + 1] = pref[i] + nums[i]
+        LOG = n.bit_length()
+        up = [[n] * (n + 1) for _ in range(LOG)]
+        sm = [[0] * (n + 1) for _ in range(LOG)]
+        for i in range(n):
+            up[0][i] = ng[i]
+            sm[0][i] = (
+                (ng[i] - i) * nums[i]
+                - (pref[ng[i]] - pref[i])
+            )
+        for p in range(1, LOG):
+            for i in range(n):
+                mid = up[p - 1][i]
+                up[p][i] = up[p - 1][mid]
+                sm[p][i] = sm[p - 1][i] + sm[p - 1][mid]
+        def get_cost(l, r):
+            cur = l
+            total = 0
+            end = r + 1
+            for p in range(LOG - 1, -1, -1):
+                nxt = up[p][cur]
+                if nxt <= end:
+                    total += sm[p][cur]
+                    cur = nxt
+            if cur <= r:
+                total += (
+                    (r - cur + 1) * nums[cur]
+                    - (pref[r + 1] - pref[cur])
+                )
+            return total
+        ans = 0
+        right = -1
+        for left in range(n):
+            if right < left - 1:
+                right = left - 1
+            while right + 1 < n and get_cost(left, right + 1) <= k:
+                right += 1
+            ans += right - left + 1
+        return ans
