@@ -1,8 +1,6 @@
 class Solution:
-    def firstElementKTime(self, arr: list[int], k: int) -> int:
-        freq = {}
-        for num in arr:
-            freq[num] = freq.get(num, 0) + 1
-            if freq[num] == k:
-                return num
-        return -1
+    def subsequenceSum(self, s):
+        MOD = 10**9 + 7
+        total = sum(int(digit) for digit in s)
+        n = len(s)
+        return (total * pow(2, n - 1, MOD)) % MOD

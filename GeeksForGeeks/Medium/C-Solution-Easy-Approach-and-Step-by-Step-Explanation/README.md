@@ -4,8 +4,8 @@
 |-------|-------|
 | Platform | GeeksForGeeks |
 | Language | python3 |
-| URL | [https://www.geeksforgeeks.org/problems/first-element-to-occur-k-times5150/1](https://www.geeksforgeeks.org/problems/first-element-to-occur-k-times5150/1) |
-| Submitted | 2026-11-10T14:36:11.476Z |
+| URL | [https://www.geeksforgeeks.org/problems/sum-of-all-sub-sequences-of-a-number3437/1](https://www.geeksforgeeks.org/problems/sum-of-all-sub-sequences-of-a-number3437/1) |
+| Submitted | 2026-11-15T12:17:09.604Z |
 
 
 ## Problem Statement
@@ -16,13 +16,11 @@ MenuBack to Explore Page
 
 ```python
 class Solution:
-    def firstElementKTime(self, arr: list[int], k: int) -> int:
-        freq = {}
-        for num in arr:
-            freq[num] = freq.get(num, 0) + 1
-            if freq[num] == k:
-                return num
-        return -1
+    def subsequenceSum(self, s):
+        MOD = 10**9 + 7
+        total = sum(int(digit) for digit in s)
+        n = len(s)
+        return (total * pow(2, n - 1, MOD)) % MOD
 ```
 
 ---
