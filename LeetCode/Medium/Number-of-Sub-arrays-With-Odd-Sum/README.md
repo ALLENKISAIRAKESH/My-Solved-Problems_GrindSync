@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/number-of-sub-arrays-with-odd-sum/](https://leetcode.com/problems/number-of-sub-arrays-with-odd-sum/) |
-| Submitted | 2026-11-15T12:10:21.681Z |
+| Submitted | 2026-11-15T12:13:44.986Z |
 
 
 ## Problem Statement
@@ -52,6 +52,24 @@ Constraints:
 ```original
 class Solution:
     def numOfSubarrays(self, arr: list[int]) -> int:
+        MOD = 10**9 + 7
+
+        odd = 0
+        even = 1
+        prefix = 0
+        ans = 0
+
+        for num in arr:
+            prefix += num
+
+            if prefix % 2 == 0:
+                ans += odd
+                even += 1
+            else:
+                ans += even
+                odd += 1
+
+        return ans % MOD
 ```
 
 ---
