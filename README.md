@@ -1,6 +1,6 @@
 # ⚡ My Solved Problems — CodeSync
 
-> Automatically synchronized DSA solutions from **LeetCode** and **GeeksforGeeks** with diagrammatic explanations.
+> Automatically synchronized DSA solutions from **LeetCode** and **GeeksforGeeks** with diagrammatic explanations
 
 ## 📁 Directory Structure
 
