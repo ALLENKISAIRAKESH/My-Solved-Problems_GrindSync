@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/minimum-changes-to-make-k-semi-palindromes/](https://leetcode.com/problems/minimum-changes-to-make-k-semi-palindromes/) |
-| Submitted | 2026-11-17T13:14:56.451Z |
+| Submitted | 2026-11-17T13:15:01.913Z |
 
 
 ## Problem Statement
@@ -107,14 +107,9 @@ class Solution:
                         while left < right:
                             if s[left] != s[right]:
                                 changes += 1
-
                             left += d
                             right -= d
-
                     cost[i][j] = min(cost[i][j], changes)
-
-        # DP: dp[p][i] = minimum changes to partition
-        # first i characters into p substrings
         dp = [[INF] * (n + 1) for _ in range(k + 1)]
         dp[0][0] = 0
 
