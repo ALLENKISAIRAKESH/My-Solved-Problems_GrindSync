@@ -12,11 +12,9 @@ class Solution:
                 length = j - i + 1
                 for d in divisors[length]:
                     changes = 0
-
                     for r in range(d):
                         left = i + r
                         right = i + r + ((length - 1 - r) // d) * d
-
                         while left < right:
                             if s[left] != s[right]:
                                 changes += 1

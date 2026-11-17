@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/minimum-changes-to-make-k-semi-palindromes/](https://leetcode.com/problems/minimum-changes-to-make-k-semi-palindromes/) |
-| Submitted | 2026-11-17T13:14:54.101Z |
+| Submitted | 2026-11-17T13:14:56.451Z |
 
 
 ## Problem Statement
@@ -101,11 +101,9 @@ class Solution:
                 length = j - i + 1
                 for d in divisors[length]:
                     changes = 0
-
                     for r in range(d):
                         left = i + r
                         right = i + r + ((length - 1 - r) // d) * d
-
                         while left < right:
                             if s[left] != s[right]:
                                 changes += 1
