@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/minimum-changes-to-make-k-semi-palindromes/](https://leetcode.com/problems/minimum-changes-to-make-k-semi-palindromes/) |
-| Submitted | 2026-11-17T13:15:01.913Z |
+| Submitted | 2026-11-17T13:15:04.581Z |
 
 
 ## Problem Statement
@@ -112,7 +112,6 @@ class Solution:
                     cost[i][j] = min(cost[i][j], changes)
         dp = [[INF] * (n + 1) for _ in range(k + 1)]
         dp[0][0] = 0
-
         for p in range(1, k + 1):
             for i in range(2 * p, n + 1):
                 for j in range(2 * (p - 1), i - 1):
@@ -120,7 +119,6 @@ class Solution:
                         dp[p][i],
                         dp[p - 1][j] + cost[j][i - 1]
                     )
-
         return dp[k][n]
 ```
 
