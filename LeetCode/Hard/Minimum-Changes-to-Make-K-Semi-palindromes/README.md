@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/minimum-changes-to-make-k-semi-palindromes/](https://leetcode.com/problems/minimum-changes-to-make-k-semi-palindromes/) |
-| Submitted | 2026-11-17T13:14:52.092Z |
+| Submitted | 2026-11-17T13:14:54.101Z |
 
 
 ## Problem Statement
@@ -96,11 +96,9 @@ class Solution:
             for length in range(2 * d, n + 1, d):
                 divisors[length].append(d)
         cost = [[INF] * n for _ in range(n)]
-
         for i in range(n):
             for j in range(i + 1, n):
                 length = j - i + 1
-
                 for d in divisors[length]:
                     changes = 0
 
