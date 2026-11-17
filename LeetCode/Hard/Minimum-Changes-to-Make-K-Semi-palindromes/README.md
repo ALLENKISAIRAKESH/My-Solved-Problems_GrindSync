@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/minimum-changes-to-make-k-semi-palindromes/](https://leetcode.com/problems/minimum-changes-to-make-k-semi-palindromes/) |
-| Submitted | 2026-11-17T13:14:46.773Z |
+| Submitted | 2026-11-17T13:14:48.828Z |
 
 
 ## Problem Statement
@@ -91,8 +91,6 @@ class Solution:
     def minimumChanges(self, s: str, k: int) -> int:
         n = len(s)
         INF = float('inf')
-
-        # Precompute divisors
         divisors = [[] for _ in range(n + 1)]
 
         for d in range(1, n):
