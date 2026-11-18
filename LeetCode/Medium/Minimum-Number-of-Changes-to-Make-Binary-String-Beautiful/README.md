@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/minimum-number-of-changes-to-make-binary-string-beautiful/](https://leetcode.com/problems/minimum-number-of-changes-to-make-binary-string-beautiful/) |
-| Submitted | 2026-11-18T08:36:03.381Z |
+| Submitted | 2026-11-18T08:36:07.776Z |
 
 
 ## Problem Statement
@@ -64,7 +64,6 @@ Constraints:
 class Solution:
     def minChanges(self, s: str) -> int:
         count = 0
-
         for i in range(0, len(s), 2):
             if s[i] != s[i + 1]:
                 count += 1
