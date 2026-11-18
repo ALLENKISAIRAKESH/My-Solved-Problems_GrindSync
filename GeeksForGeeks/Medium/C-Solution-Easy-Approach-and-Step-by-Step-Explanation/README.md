@@ -4,8 +4,8 @@
 |-------|-------|
 | Platform | GeeksForGeeks |
 | Language | python3 |
-| URL | [https://www.geeksforgeeks.org/problems/sum-of-all-sub-sequences-of-a-number3437/1](https://www.geeksforgeeks.org/problems/sum-of-all-sub-sequences-of-a-number3437/1) |
-| Submitted | 2026-11-15T12:17:09.604Z |
+| URL | [https://www.geeksforgeeks.org/problems/find-xor-of-numbers-from-l-to-r/1](https://www.geeksforgeeks.org/problems/find-xor-of-numbers-from-l-to-r/1) |
+| Submitted | 2026-11-18T08:38:03.277Z |
 
 
 ## Problem Statement
@@ -16,11 +16,17 @@ MenuBack to Explore Page
 
 ```python
 class Solution:
-    def subsequenceSum(self, s):
-        MOD = 10**9 + 7
-        total = sum(int(digit) for digit in s)
-        n = len(s)
-        return (total * pow(2, n - 1, MOD)) % MOD
+    def findXOR(self, l: int, r: int) -> int:
+        def xor(n):
+            if n % 4 == 0:
+                return n
+            elif n % 4 == 1:
+                return 1
+            elif n % 4 == 2:
+                return n + 1
+            else:
+                return 0
+        return xor(r) ^ xor(l - 1)
 ```
 
 ---
