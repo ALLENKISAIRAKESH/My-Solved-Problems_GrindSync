@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/minimum-score-by-changing-two-elements/](https://leetcode.com/problems/minimum-score-by-changing-two-elements/) |
-| Submitted | 2026-11-19T07:58:10.340Z |
+| Submitted | 2026-11-19T07:58:12.834Z |
 
 
 ## Problem Statement
@@ -67,9 +67,7 @@ Constraints:
 class Solution:
     def minimizeSum(self, nums: List[int]) -> int:
         nums.sort()
-
         n = len(nums)
-
         return min(
             nums[n-1] - nums[2],
             nums[n-2] - nums[1],
