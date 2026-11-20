@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximize-consecutive-elements-in-an-array-after-modification/](https://leetcode.com/problems/maximize-consecutive-elements-in-an-array-after-modification/) |
-| Submitted | 2026-11-20T14:50:14.826Z |
+| Submitted | 2026-11-20T14:50:20.118Z |
 
 
 ## Problem Statement
@@ -49,8 +49,7 @@ class Solution:
     def maxSelectedElements(self, nums: List[int]) -> int:
         nums.sort()
         dp = {}
-        a
-         = 0
+        a = 0
         for x in nums:
             dp[x + 1] = dp.get(x, 0) + 1
             dp[x] = dp.get(x - 1, 0) + 1
