@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/find-subtree-sizes-after-changes/](https://leetcode.com/problems/find-subtree-sizes-after-changes/) |
-| Submitted | 2026-11-21T06:59:49.861Z |
+| Submitted | 2026-11-21T06:59:53.799Z |
 
 
 ## Problem Statement
@@ -93,14 +93,10 @@ class Solution:
         ans = [0] * n
         def dfs2(node):
             ans[node] = 1
-
             for child in new_children[node]:
                 ans[node] += dfs2(child)
-
             return ans[node]
-
         dfs2(0)
-
         return ans
 ```
 

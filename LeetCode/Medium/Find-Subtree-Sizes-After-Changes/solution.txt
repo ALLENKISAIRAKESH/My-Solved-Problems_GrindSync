@@ -22,12 +22,8 @@ class Solution:
         ans = [0] * n
         def dfs2(node):
             ans[node] = 1
-
             for child in new_children[node]:
                 ans[node] += dfs2(child)
-
             return ans[node]
-
         dfs2(0)
-
         return ans
