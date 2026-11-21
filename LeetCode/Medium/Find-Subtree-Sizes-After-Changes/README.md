@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/find-subtree-sizes-after-changes/](https://leetcode.com/problems/find-subtree-sizes-after-changes/) |
-| Submitted | 2026-11-21T06:59:42.962Z |
+| Submitted | 2026-11-21T06:59:47.810Z |
 
 
 ## Problem Statement
@@ -85,16 +85,11 @@ class Solution:
             last[c] = node
             for child in children[node]:
                 dfs1(child)
-
             last[c] = prev
-
         dfs1(0)
-
-        # Build modified tree
         new_children = [[] for _ in range(n)]
         for i in range(1, n):
             new_children[new_parent[i]].append(i)
-
         # Calculate subtree sizes
         ans = [0] * n
 
