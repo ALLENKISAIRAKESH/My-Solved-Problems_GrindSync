@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/find-subtree-sizes-after-changes/](https://leetcode.com/problems/find-subtree-sizes-after-changes/) |
-| Submitted | 2026-11-21T06:59:34.448Z |
+| Submitted | 2026-11-21T06:59:37.929Z |
 
 
 ## Problem Statement
@@ -72,14 +72,11 @@ Constraints:
 class Solution:
     def findSubtreeSizes(self, parent: List[int], s: str) -> List[int]:
         n = len(parent)
-        # Build original tree
         children = [[] for _ in range(n)]
         for i in range(1, n):
             children[parent[i]].append(i)
-
         new_parent = parent[:]
         last = [-1] * 26
-
         # Find nearest matching ancestor in original tree
         def dfs1(node):
             c = ord(s[node]) - ord('a')
