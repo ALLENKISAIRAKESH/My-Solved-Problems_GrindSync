@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/find-subtree-sizes-after-changes/](https://leetcode.com/problems/find-subtree-sizes-after-changes/) |
-| Submitted | 2026-11-21T06:59:31.699Z |
+| Submitted | 2026-11-21T06:59:34.448Z |
 
 
 ## Problem Statement
@@ -72,7 +72,6 @@ Constraints:
 class Solution:
     def findSubtreeSizes(self, parent: List[int], s: str) -> List[int]:
         n = len(parent)
-
         # Build original tree
         children = [[] for _ in range(n)]
         for i in range(1, n):
