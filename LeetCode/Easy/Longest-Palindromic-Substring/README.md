@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | original |
 | URL | [https://leetcode.com/problems/longest-palindromic-substring/](https://leetcode.com/problems/longest-palindromic-substring/) |
-| Submitted | 2026-11-22T10:40:12.100Z |
+| Submitted | 2026-11-22T10:40:16.251Z |
 
 
 ## Problem Statement
@@ -51,7 +51,6 @@ class Solution:
         for i in range(n):
             expand(i, i)
             expand(i, i + 1)
-
         return s[best_l : best_r + 1]
 ```
 
