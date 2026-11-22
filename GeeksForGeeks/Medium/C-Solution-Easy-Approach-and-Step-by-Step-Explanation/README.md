@@ -4,8 +4,8 @@
 |-------|-------|
 | Platform | GeeksForGeeks |
 | Language | python3 |
-| URL | [https://www.geeksforgeeks.org/problems/smallest-subarray-with-sum-greater-than-x5651/1](https://www.geeksforgeeks.org/problems/smallest-subarray-with-sum-greater-than-x5651/1) |
-| Submitted | 2026-11-21T07:00:45.160Z |
+| URL | [https://www.geeksforgeeks.org/problems/longest-subarray-with-sum-divisible-by-k1259/1](https://www.geeksforgeeks.org/problems/longest-subarray-with-sum-divisible-by-k1259/1) |
+| Submitted | 2026-11-22T09:34:57.869Z |
 
 
 ## Problem Statement
@@ -16,17 +16,18 @@ MenuBack to Explore Page
 
 ```python
 class Solution:
-    def smallestSubWithSum(self, arr, x):
-        left = 0
-        curr_sum = 0
-        min_len = float('inf')
-        for right in range(len(arr)):
-            curr_sum += arr[right]
-            while curr_sum > x:
-                min_len = min(min_len, right - left + 1)
-                curr_sum -= arr[left]
-                left += 1
-        return 0 if min_len == float('inf') else min_len
+    def longestSubarrayDivK(self, arr, k):
+        prefix_sum = 0
+        first_index = {0: -1}
+        max_len = 0
+        for i in range(len(arr)):
+            prefix_sum += arr[i]
+            rem = prefix_sum % k
+            if rem in first_index:
+                max_len = max(max_len, i - first_index[rem])
+            else:
+                first_index[rem] = i
+        return max_len
 ```
 
 ---
