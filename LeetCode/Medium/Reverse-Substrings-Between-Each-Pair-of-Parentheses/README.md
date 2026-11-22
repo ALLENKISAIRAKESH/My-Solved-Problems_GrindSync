@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Medium |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/](https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/) |
 | Submitted | 2026-09-27T05:54:35.000Z |

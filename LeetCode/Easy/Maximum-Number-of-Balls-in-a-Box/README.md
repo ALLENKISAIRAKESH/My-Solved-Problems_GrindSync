@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/maximum-number-of-balls-in-a-box/](https://leetcode.com/problems/maximum-number-of-balls-in-a-box/) |
-| Submitted | 2026-09-28T05:51:19.000Z |
+| Submitted | 2026-09-28T05:51:35.000Z |
 
 
 ## Solution
@@ -14,16 +14,18 @@
 ```python
 class Solution:
     def countBalls(self, lowLimit: int, highLimit: int) -> int:
-        box_counts = [0] * 46  
+        box_counts = {}
+        max_balls = 0
         for i in range(lowLimit, highLimit + 1):
-            digit_sum = 0
             temp = i
+            digit_sum = 0
             while temp > 0:
                 digit_sum += temp % 10
                 temp //= 10
-            box_counts[digit_sum] += 1
-        return max(box_counts)
-
+            box_counts[digit_sum] = box_counts.get(digit_sum, 0) + 1
+            if box_counts[digit_sum] > max_balls:
+                max_balls = box_counts[digit_sum]      
+        return max_balls
 ```
 
 ---

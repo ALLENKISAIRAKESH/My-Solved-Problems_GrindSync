@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Medium |
 | Language | java |
 | URL | [https://leetcode.com/problems/number-of-ways-to-assign-edge-weights-i/](https://leetcode.com/problems/number-of-ways-to-assign-edge-weights-i/) |
 | Submitted | 2026-06-11T16:48:44.000Z |

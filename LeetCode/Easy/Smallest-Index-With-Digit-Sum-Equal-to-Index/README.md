@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Easy |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/smallest-index-with-digit-sum-equal-to-index/](https://leetcode.com/problems/smallest-index-with-digit-sum-equal-to-index/) |
 | Submitted | 2026-09-24T15:45:27.000Z |

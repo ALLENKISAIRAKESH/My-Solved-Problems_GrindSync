@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Easy |
 | Language | java |
 | URL | [https://leetcode.com/problems/weighted-word-mapping/](https://leetcode.com/problems/weighted-word-mapping/) |
 | Submitted | 2026-06-13T17:08:23.000Z |

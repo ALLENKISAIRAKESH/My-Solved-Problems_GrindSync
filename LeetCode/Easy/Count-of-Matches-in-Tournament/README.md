@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Easy |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/count-of-matches-in-tournament/](https://leetcode.com/problems/count-of-matches-in-tournament/) |
 | Submitted | 2026-09-23T10:24:08.000Z |

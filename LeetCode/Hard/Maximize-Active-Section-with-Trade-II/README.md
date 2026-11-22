@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Hard |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/maximize-active-section-with-trade-ii/](https://leetcode.com/problems/maximize-active-section-with-trade-ii/) |
 | Submitted | 2026-07-22T13:47:25.000Z |

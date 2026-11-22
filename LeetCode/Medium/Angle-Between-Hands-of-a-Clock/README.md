@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Medium |
 | Language | java |
 | URL | [https://leetcode.com/problems/angle-between-hands-of-a-clock/](https://leetcode.com/problems/angle-between-hands-of-a-clock/) |
 | Submitted | 2026-06-18T16:03:45.000Z |

@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Medium |
 | Language | java |
 | URL | [https://leetcode.com/problems/count-subarrays-with-majority-element-i/](https://leetcode.com/problems/count-subarrays-with-majority-element-i/) |
 | Submitted | 2026-06-25T17:49:35.000Z |

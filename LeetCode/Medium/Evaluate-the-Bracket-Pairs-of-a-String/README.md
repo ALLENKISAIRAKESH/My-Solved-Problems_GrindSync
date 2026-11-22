@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Medium |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/evaluate-the-bracket-pairs-of-a-string/](https://leetcode.com/problems/evaluate-the-bracket-pairs-of-a-string/) |
 | Submitted | 2026-09-26T12:47:57.000Z |

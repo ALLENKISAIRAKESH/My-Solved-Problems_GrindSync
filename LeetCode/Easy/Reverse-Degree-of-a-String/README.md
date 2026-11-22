@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Easy |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/reverse-degree-of-a-string/](https://leetcode.com/problems/reverse-degree-of-a-string/) |
 | Submitted | 2026-09-20T09:19:29.000Z |

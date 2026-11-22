@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Medium |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/](https://leetcode.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/) |
 | Submitted | 2026-09-18T14:40:00.000Z |

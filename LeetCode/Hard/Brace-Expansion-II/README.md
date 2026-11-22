@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Hard |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/brace-expansion-ii/](https://leetcode.com/problems/brace-expansion-ii/) |
 | Submitted | 2026-09-25T12:05:33.000Z |

@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Easy |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/day-of-the-year/](https://leetcode.com/problems/day-of-the-year/) |
 | Submitted | 2026-09-23T09:03:00.000Z |

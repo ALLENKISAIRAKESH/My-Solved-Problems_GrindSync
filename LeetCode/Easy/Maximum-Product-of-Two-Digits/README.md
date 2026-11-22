@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Easy |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/maximum-product-of-two-digits/](https://leetcode.com/problems/maximum-product-of-two-digits/) |
 | Submitted | 2026-07-26T09:06:19.000Z |

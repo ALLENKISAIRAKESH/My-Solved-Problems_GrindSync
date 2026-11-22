@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Easy |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/calculate-money-in-leetcode-bank/](https://leetcode.com/problems/calculate-money-in-leetcode-bank/) |
 | Submitted | 2026-09-28T05:25:06.000Z |

@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Hard |
 | Language | java |
 | URL | [https://leetcode.com/problems/number-of-zigzag-arrays-i/](https://leetcode.com/problems/number-of-zigzag-arrays-i/) |
 | Submitted | 2026-06-23T15:48:07.000Z |

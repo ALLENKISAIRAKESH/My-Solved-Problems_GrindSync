@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Medium |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/circle-and-rectangle-overlapping/](https://leetcode.com/problems/circle-and-rectangle-overlapping/) |
 | Submitted | 2026-09-19T17:21:49.000Z |

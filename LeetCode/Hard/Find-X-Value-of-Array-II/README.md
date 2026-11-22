@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Hard |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/find-x-value-of-array-ii/](https://leetcode.com/problems/find-x-value-of-array-ii/) |
 | Submitted | 2026-09-22T15:17:10.000Z |

@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Easy |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/smallest-missing-multiple-of-k/](https://leetcode.com/problems/smallest-missing-multiple-of-k/) |
 | Submitted | 2026-08-25T15:51:53.000Z |

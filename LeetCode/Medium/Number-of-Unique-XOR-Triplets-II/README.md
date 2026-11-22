@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Medium |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/number-of-unique-xor-triplets-ii/](https://leetcode.com/problems/number-of-unique-xor-triplets-ii/) |
 | Submitted | 2026-07-24T12:46:57.000Z |

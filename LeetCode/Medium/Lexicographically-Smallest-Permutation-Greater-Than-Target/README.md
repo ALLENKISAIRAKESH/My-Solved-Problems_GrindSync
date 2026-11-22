@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Medium |
 | Language | python3 |
 | URL | [https://leetcode.com/problems/lexicographically-smallest-permutation-greater-than-target/](https://leetcode.com/problems/lexicographically-smallest-permutation-greater-than-target/) |
 | Submitted | 2026-08-27T17:20:33.000Z |

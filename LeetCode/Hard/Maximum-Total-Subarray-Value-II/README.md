@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Hard |
 | Language | java |
 | URL | [https://leetcode.com/problems/maximum-total-subarray-value-ii/](https://leetcode.com/problems/maximum-total-subarray-value-ii/) |
 | Submitted | 2026-06-10T15:50:46.000Z |

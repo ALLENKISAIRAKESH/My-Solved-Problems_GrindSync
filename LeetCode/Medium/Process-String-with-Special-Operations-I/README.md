@@ -3,6 +3,7 @@
 | Field | Value |
 |-------|-------|
 | Platform | LeetCode |
+| Difficulty | Medium |
 | Language | java |
 | URL | [https://leetcode.com/problems/process-string-with-special-operations-i/](https://leetcode.com/problems/process-string-with-special-operations-i/) |
 | Submitted | 2026-06-16T17:12:09.000Z |
