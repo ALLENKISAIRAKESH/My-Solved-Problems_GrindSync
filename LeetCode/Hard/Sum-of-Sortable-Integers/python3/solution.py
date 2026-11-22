@@ -1,0 +1,24 @@
+class Solution:
+    def sortableIntegers(self, nums: list[int]) -> int:
+        n = len(nums)
+        ans = 0
+        for k in range(1, n + 1):
+            if n % k:
+                continue
+            ok = True
+            p = float('-inf')
+            for i in range(0, n, k):
+                b = nums[i:i + k]
+                d = [j for j in range(k) if b[j] > b[(j + 1) % k]]
+                if len(d) > 1:
+                    ok = False
+                    break
+                j = (d[0] + 1) % k if d else 0
+                b = b[j:] + b[:j]
+                if b[0] < p:
+                    ok = False
+                    break
+                p = b[-1]
+            if ok:
+                ans += k
+        return ans
