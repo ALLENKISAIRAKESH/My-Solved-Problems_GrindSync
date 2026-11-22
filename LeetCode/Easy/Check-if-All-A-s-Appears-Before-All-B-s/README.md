@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | original |
 | URL | [https://leetcode.com/problems/check-if-all-as-appears-before-all-bs/](https://leetcode.com/problems/check-if-all-as-appears-before-all-bs/) |
-| Submitted | 2026-11-22T09:31:29.797Z |
+| Submitted | 2026-11-22T09:31:32.753Z |
 
 
 ## Problem Statement
@@ -52,7 +52,7 @@ Constraints:
 ```original
 class Solution:
     def checkString(self, s: str) -> bool:
-        return
+        return "ba"
 ```
 
 ---
