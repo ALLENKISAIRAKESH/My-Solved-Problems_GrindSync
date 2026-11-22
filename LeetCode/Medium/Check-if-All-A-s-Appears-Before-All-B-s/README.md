@@ -5,7 +5,7 @@
 | Platform | LeetCode |
 | Language | tag |
 | URL | [https://leetcode.com/problems/check-if-all-as-appears-before-all-bs/](https://leetcode.com/problems/check-if-all-as-appears-before-all-bs/) |
-| Submitted | 2026-11-22T10:21:40.153Z |
+| Submitted | 2026-11-22T10:38:45.225Z |
 
 
 ## Solution
