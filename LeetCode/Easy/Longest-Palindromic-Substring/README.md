@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | original |
 | URL | [https://leetcode.com/problems/longest-palindromic-substring/](https://leetcode.com/problems/longest-palindromic-substring/) |
-| Submitted | 2026-11-22T10:40:08.708Z |
+| Submitted | 2026-11-22T10:40:12.100Z |
 
 
 ## Problem Statement
@@ -41,7 +41,6 @@ class Solution:
     def longestPalindrome(self, s: str) -> str:
         best_l = best_r = 0
         n = len(s)
-
         def expand(l: int, r: int) -> None:
             nonlocal best_l, best_r
             while l >= 0 and r < n and s[l] == s[r]:
@@ -49,7 +48,6 @@ class Solution:
                     best_l, best_r = l, r
                 l -= 1
                 r += 1
-
         for i in range(n):
             expand(i, i)
             expand(i, i + 1)
