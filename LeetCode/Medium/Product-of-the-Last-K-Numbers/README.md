@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/product-of-the-last-k-numbers/](https://leetcode.com/problems/product-of-the-last-k-numbers/) |
-| Submitted | 2026-11-23T16:03:10.284Z |
+| Submitted | 2026-11-23T16:03:14.465Z |
 
 
 ## Problem Statement
@@ -64,7 +64,6 @@ Follow-up: Can you implement both GetProduct and Add to work in O(1) time comple
 
 ```tag
 class ProductOfNumbers:
-
     def __init__(self):
         self.prefix = [1]
 

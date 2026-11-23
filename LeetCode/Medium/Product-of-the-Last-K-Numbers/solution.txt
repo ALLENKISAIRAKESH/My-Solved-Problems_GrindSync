@@ -1,5 +1,4 @@
 class ProductOfNumbers:
-
     def __init__(self):
         self.prefix = [1]
 
