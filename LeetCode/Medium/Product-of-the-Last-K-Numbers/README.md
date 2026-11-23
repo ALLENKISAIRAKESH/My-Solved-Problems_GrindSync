@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | tag |
 | URL | [https://leetcode.com/problems/product-of-the-last-k-numbers/](https://leetcode.com/problems/product-of-the-last-k-numbers/) |
-| Submitted | 2026-11-23T16:03:17.709Z |
+| Submitted | 2026-11-23T16:03:22.110Z |
 
 
 ## Problem Statement
@@ -75,7 +75,7 @@ class ProductOfNumbers:
 
     def getProduct(self, k: int) -> int:
         if k >= len(self.prefix):
-            return 0  # A zero exists in the last k numbers
+            return 0 
         return self.prefix[-1] // self.prefix[-k-1]
         
 
