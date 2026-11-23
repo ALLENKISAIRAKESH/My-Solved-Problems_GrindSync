@@ -1,13 +1,21 @@
 class Solution:
-    def longestSubarrayDivK(self, arr, k):
-        prefix_sum = 0
-        first_index = {0: -1}
-        max_len = 0
-        for i in range(len(arr)):
-            prefix_sum += arr[i]
-            rem = prefix_sum % k
-            if rem in first_index:
-                max_len = max(max_len, i - first_index[rem])
+    def posInfinite(self, s: str, pos: int) -> str:
+        lengths = [len(s)]
+        step = 1
+        while lengths[-1] < pos:
+            lengths.append(2 * lengths[-1] + step)
+            step += 1
+        step -= 1
+        while step > 0:
+            old_len = lengths[step - 1]
+            new_len = lengths[step]
+            if pos <= old_len:
+                pass  
+            elif pos <= old_len + step:
+                return '$'  
             else:
-                first_index[rem] = i
-        return max_len
+                pos = 2 * old_len + step - pos + 1
+
+            step -= 1
+
+        return s[pos - 1]
