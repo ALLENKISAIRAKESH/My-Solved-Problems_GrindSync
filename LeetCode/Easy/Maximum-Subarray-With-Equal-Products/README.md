@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-subarray-with-equal-products/](https://leetcode.com/problems/maximum-subarray-with-equal-products/) |
-| Submitted | 2026-11-24T09:04:55.100Z |
+| Submitted | 2026-11-24T09:04:59.288Z |
 
 
 ## Problem Statement
@@ -81,7 +81,6 @@ class Solution:
                 l = (l * x) // gcd(l, x)
                 if prod == g * l:
                     ans = max(ans, j - i + 1)
-
         return ans
 ```
 

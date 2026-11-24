@@ -13,5 +13,4 @@ class Solution:
                 l = (l * x) // gcd(l, x)
                 if prod == g * l:
                     ans = max(ans, j - i + 1)
-
         return ans
