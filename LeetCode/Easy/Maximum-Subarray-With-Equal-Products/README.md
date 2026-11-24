@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-subarray-with-equal-products/](https://leetcode.com/problems/maximum-subarray-with-equal-products/) |
-| Submitted | 2026-11-24T09:04:51.231Z |
+| Submitted | 2026-11-24T09:04:55.100Z |
 
 
 ## Problem Statement
@@ -70,19 +70,15 @@ class Solution:
     def maxLength(self, nums: List[int]) -> int:
         n = len(nums)
         ans = 1
-
         for i in range(n):
             prod = 1
             g = 0
             l = 1
-
             for j in range(i, n):
                 x = nums[j]
-
                 prod *= x
                 g = gcd(g, x)
                 l = (l * x) // gcd(l, x)
-
                 if prod == g * l:
                     ans = max(ans, j - i + 1)
 
