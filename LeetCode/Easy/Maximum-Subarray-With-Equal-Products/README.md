@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-subarray-with-equal-products/](https://leetcode.com/problems/maximum-subarray-with-equal-products/) |
-| Submitted | 2026-11-24T09:04:45.421Z |
+| Submitted | 2026-11-24T09:04:51.231Z |
 
 
 ## Problem Statement
@@ -66,10 +66,6 @@ Constraints:
 ## Solution
 
 ```original
-from math import gcd
-from functools import reduce
-from typing import List
-
 class Solution:
     def maxLength(self, nums: List[int]) -> int:
         n = len(nums)
