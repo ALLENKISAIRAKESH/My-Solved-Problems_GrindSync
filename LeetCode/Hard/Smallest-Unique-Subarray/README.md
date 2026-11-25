@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/smallest-unique-subarray/](https://leetcode.com/problems/smallest-unique-subarray/) |
-| Submitted | 2026-11-25T12:58:57.856Z |
+| Submitted | 2026-11-25T12:59:01.996Z |
 
 
 ## Problem Statement
@@ -128,16 +128,12 @@ class Solution:
             if h:
                 h -= 1
         max_lcp = [0] * n
-
         for p in range(n):
             max_lcp[sa[p]] = max(
                 lcp[p],
                 lcp[p + 1] if p + 1 < n else 0
             )
-
-        # Minimum length that makes some subarray unique
         ans = n
-
         for i in range(n):
             length = max_lcp[i] + 1
             if length <= n - i:
