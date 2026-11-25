@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/smallest-unique-subarray/](https://leetcode.com/problems/smallest-unique-subarray/) |
-| Submitted | 2026-11-25T12:58:26.686Z |
+| Submitted | 2026-11-25T12:58:33.194Z |
 
 
 ## Problem Statement
@@ -92,8 +92,6 @@ Constraints:
 ## Solution
 
 ```original
-from typing import List
-
 class Solution:
     def smallestUniqueSubarray(self, nums: List[int]) -> int:
         n = len(nums)
