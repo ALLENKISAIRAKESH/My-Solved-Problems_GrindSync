@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/smallest-unique-subarray/](https://leetcode.com/problems/smallest-unique-subarray/) |
-| Submitted | 2026-11-25T12:58:33.194Z |
+| Submitted | 2026-11-25T12:58:39.034Z |
 
 
 ## Problem Statement
@@ -95,12 +95,8 @@ Constraints:
 class Solution:
     def smallestUniqueSubarray(self, nums: List[int]) -> int:
         n = len(nums)
-
-        # Coordinate compression
         vals = {v: i for i, v in enumerate(sorted(set(nums)))}
         arr = [vals[x] for x in nums]
-
-        # Build suffix array using doubling
         sa = list(range(n))
         rank = arr[:]
         k = 1
