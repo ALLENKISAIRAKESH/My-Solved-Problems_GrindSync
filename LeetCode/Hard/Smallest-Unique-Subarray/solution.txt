@@ -44,5 +44,4 @@ class Solution:
             length = max_lcp[i] + 1
             if length <= n - i:
                 ans = min(ans, length)
-
         return ans

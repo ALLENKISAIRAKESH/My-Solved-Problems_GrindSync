@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/smallest-unique-subarray/](https://leetcode.com/problems/smallest-unique-subarray/) |
-| Submitted | 2026-11-25T12:59:01.996Z |
+| Submitted | 2026-11-25T12:59:06.142Z |
 
 
 ## Problem Statement
@@ -138,7 +138,6 @@ class Solution:
             length = max_lcp[i] + 1
             if length <= n - i:
                 ans = min(ans, length)
-
         return ans
 ```
 
