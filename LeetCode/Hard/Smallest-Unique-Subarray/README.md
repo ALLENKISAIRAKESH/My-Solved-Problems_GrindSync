@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/smallest-unique-subarray/](https://leetcode.com/problems/smallest-unique-subarray/) |
-| Submitted | 2026-11-25T12:56:49.200Z |
+| Submitted | 2026-11-25T12:58:26.686Z |
 
 
 ## Problem Statement
@@ -92,18 +92,79 @@ Constraints:
 ## Solution
 
 ```original
+from typing import List
+
 class Solution:
     def smallestUniqueSubarray(self, nums: List[int]) -> int:
         n = len(nums)
-        for k in range(1, n + 1):
-            freq = {}
-            for i in range(n - k + 1):
-                sub = tuple(nums[i:i + k])
-                freq[sub] = freq.get(sub, 0) + 1
-            for count in freq.values():
-                if count == 1:
-                    return k
-        return n
+
+        # Coordinate compression
+        vals = {v: i for i, v in enumerate(sorted(set(nums)))}
+        arr = [vals[x] for x in nums]
+
+        # Build suffix array using doubling
+        sa = list(range(n))
+        rank = arr[:]
+        k = 1
+
+        while k < n:
+            sa.sort(key=lambda i: (rank[i], rank[i + k] if i + k < n else -1))
+
+            new_rank = [0] * n
+            for j in range(1, n):
+                prev, curr = sa[j - 1], sa[j]
+
+                prev_key = (rank[prev], rank[prev + k] if prev + k < n else -1)
+                curr_key = (rank[curr], rank[curr + k] if curr + k < n else -1)
+
+                new_rank[curr] = new_rank[prev] + (prev_key != curr_key
+
+            rank = new_rank
+            if rank[sa[-1]] == n - 1:
+                break
+
+            k *= 2
+
+        # Build inverse suffix array
+        pos = [0] * n
+        for i in range(n):
+            pos[sa[i]] = i
+
+        # Kasai's algorithm: calculate LCP with previous suffix
+        lcp = [0] * n
+        h = 0
+
+        for i in range(n):
+            p = pos[i]
+            if p == 0:
+                continue
+
+            j = sa[p - 1]
+            while i + h < n and j + h < n and arr[i + h] == arr[j + h]:
+                h += 1
+
+            lcp[p] = h
+            if h:
+                h -= 1
+
+        # For each suffix, longest common prefix with any other suffix
+        max_lcp = [0] * n
+
+        for p in range(n):
+            max_lcp[sa[p]] = max(
+                lcp[p],
+                lcp[p + 1] if p + 1 < n else 0
+            )
+
+        # Minimum length that makes some subarray unique
+        ans = n
+
+        for i in range(n):
+            length = max_lcp[i] + 1
+            if length <= n - i:
+                ans = min(ans, length)
+
+        return ans
 ```
 
 ---
