@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/](https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/) |
-| Submitted | 2026-11-23T16:01:54.579Z |
+| Submitted | 2026-11-25T12:54:44.781Z |
 
 
 ## Problem Statement
