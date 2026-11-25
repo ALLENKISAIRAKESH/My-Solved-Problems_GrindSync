@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/smallest-unique-subarray/](https://leetcode.com/problems/smallest-unique-subarray/) |
-| Submitted | 2026-11-25T12:58:39.034Z |
+| Submitted | 2026-11-25T12:58:43.852Z |
 
 
 ## Problem Statement
@@ -100,10 +100,8 @@ class Solution:
         sa = list(range(n))
         rank = arr[:]
         k = 1
-
         while k < n:
             sa.sort(key=lambda i: (rank[i], rank[i + k] if i + k < n else -1))
-
             new_rank = [0] * n
             for j in range(1, n):
                 prev, curr = sa[j - 1], sa[j]
