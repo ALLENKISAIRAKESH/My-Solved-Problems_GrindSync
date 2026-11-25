@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/smallest-unique-subarray/](https://leetcode.com/problems/smallest-unique-subarray/) |
-| Submitted | 2026-11-25T12:58:43.852Z |
+| Submitted | 2026-11-25T12:58:57.856Z |
 
 
 ## Problem Statement
@@ -105,41 +105,28 @@ class Solution:
             new_rank = [0] * n
             for j in range(1, n):
                 prev, curr = sa[j - 1], sa[j]
-
                 prev_key = (rank[prev], rank[prev + k] if prev + k < n else -1)
                 curr_key = (rank[curr], rank[curr + k] if curr + k < n else -1)
-
                 new_rank[curr] = new_rank[prev] + (prev_key != curr_key
-
             rank = new_rank
             if rank[sa[-1]] == n - 1:
                 break
-
             k *= 2
-
-        # Build inverse suffix array
         pos = [0] * n
         for i in range(n):
             pos[sa[i]] = i
-
-        # Kasai's algorithm: calculate LCP with previous suffix
         lcp = [0] * n
         h = 0
-
         for i in range(n):
             p = pos[i]
             if p == 0:
                 continue
-
             j = sa[p - 1]
             while i + h < n and j + h < n and arr[i + h] == arr[j + h]:
                 h += 1
-
             lcp[p] = h
             if h:
                 h -= 1
-
-        # For each suffix, longest common prefix with any other suffix
         max_lcp = [0] * n
 
         for p in range(n):
