@@ -6,7 +6,7 @@
 | Difficulty | Hard |
 | Language | original |
 | URL | [https://leetcode.com/problems/smallest-unique-subarray/](https://leetcode.com/problems/smallest-unique-subarray/) |
-| Submitted | 2026-11-25T12:56:42.198Z |
+| Submitted | 2026-11-25T12:56:45.544Z |
 
 
 ## Problem Statement
@@ -95,11 +95,8 @@ Constraints:
 class Solution:
     def smallestUniqueSubarray(self, nums: List[int]) -> int:
         n = len(nums)
-
         for k in range(1, n + 1):
             freq = {}
-
-            # Count all subarrays of length k
             for i in range(n - k + 1):
                 sub = tuple(nums[i:i + k])
                 freq[sub] = freq.get(sub, 0) + 1
