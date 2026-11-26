@@ -4,9 +4,9 @@
 |-------|-------|
 | Platform | LeetCode |
 | Difficulty | Medium |
-| Language | original |
+| Language | tag |
 | URL | [https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/](https://leetcode.com/problems/find-the-prefix-common-array-of-two-arrays/) |
-| Submitted | 2026-11-25T12:54:44.781Z |
+| Submitted | 2026-11-26T14:38:56.527Z |
 
 
 ## Problem Statement
@@ -49,7 +49,7 @@ Constraints:
 
 ## Solution
 
-```original
+```tag
 class Solution:
     def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
         n = len(A)
