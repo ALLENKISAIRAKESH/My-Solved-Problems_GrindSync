@@ -6,7 +6,7 @@
 | Difficulty | Easy |
 | Language | original |
 | URL | [https://leetcode.com/problems/stone-removal-game/](https://leetcode.com/problems/stone-removal-game/) |
-| Submitted | 2026-11-26T14:39:33.338Z |
+| Submitted | 2026-11-26T14:39:39.328Z |
 
 
 ## Problem Statement
@@ -65,12 +65,10 @@ class Solution:
     def canAliceWin(self, n: int) -> bool:
         stones = 10
         alice = True
-
         while n >= stones:
             n -= stones
             stones -= 1
             alice = not alice
-
         return not alice
 ```
 
