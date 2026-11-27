@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-i/](https://leetcode.com/problems/maximum-number-of-items-from-sale-i/) |
-| Submitted | 2026-11-27T06:03:26.298Z |
+| Submitted | 2026-11-27T06:03:34.754Z |
 
 
 ## Problem Statement
@@ -75,12 +75,8 @@ Constraints:
 class Solution:
     def maximumSaleItems(self, items: List[List[int]], budget: int) -> int:
         n = len(items)
-
         minPrice = min(price for factor, price in items)
-
-        # Calculate the contribution of each item
         values = []
-
         for i in range(n):
             factor, price = items[i]
 
