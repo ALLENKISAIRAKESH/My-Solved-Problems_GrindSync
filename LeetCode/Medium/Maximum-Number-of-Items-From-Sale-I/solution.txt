@@ -19,5 +19,4 @@ class Solution:
             if dp[c] >= 0:
                 extra = (budget - c) // minPrice
                 ans = max(ans, dp[c] + extra)
-
         return ans

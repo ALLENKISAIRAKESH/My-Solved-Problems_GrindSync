@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-i/](https://leetcode.com/problems/maximum-number-of-items-from-sale-i/) |
-| Submitted | 2026-11-27T06:03:42.875Z |
+| Submitted | 2026-11-27T06:03:47.691Z |
 
 
 ## Problem Statement
@@ -93,7 +93,6 @@ class Solution:
             if dp[c] >= 0:
                 extra = (budget - c) // minPrice
                 ans = max(ans, dp[c] + extra)
-
         return ans
 ```
 
