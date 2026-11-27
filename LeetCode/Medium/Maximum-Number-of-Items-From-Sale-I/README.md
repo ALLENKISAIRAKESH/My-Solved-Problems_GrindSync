@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-i/](https://leetcode.com/problems/maximum-number-of-items-from-sale-i/) |
-| Submitted | 2026-11-27T06:03:34.754Z |
+| Submitted | 2026-11-27T06:03:42.875Z |
 
 
 ## Problem Statement
@@ -79,24 +79,16 @@ class Solution:
         values = []
         for i in range(n):
             factor, price = items[i]
-
             free = 0
             for j in range(n):
                 if i != j and items[j][0] % factor == 0:
                     free += 1
-
             values.append((price, 1 + free))
-
-        # 0/1 Knapsack
         dp = [0] + [-10**9] * budget
-
         for price, value in values:
             for c in range(budget, price - 1, -1):
                 dp[c] = max(dp[c], dp[c - price] + value)
-
-        # Spend remaining budget on cheapest item
         ans = 0
-
         for c in range(budget + 1):
             if dp[c] >= 0:
                 extra = (budget - c) // minPrice
