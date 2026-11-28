@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/](https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/) |
-| Submitted | 2026-11-28T12:31:05.722Z |
+| Submitted | 2026-11-28T12:31:12.268Z |
 
 
 ## Problem Statement
@@ -85,22 +85,16 @@ class Solution:
                 if i != j and items[i][0] < items[j][0] and items[j][0] % items[i][0] == 0:
                     free[i] += 1
         first = sorted([(items[i][1] / (1 + free[i]), items[i][1], free[i]) for i in range(n)])
-
         ans = 0
-
         for _, price, freebies in first:
             if budget >= price:
                 budget -= price
                 ans += 1 + freebies
-
-        # Buy additional copies of the cheapest items
         prices = sorted(items[i][1] for i in range(n))
-
         for price in prices:
             cnt = budget // price
             ans += cnt
             budget %= price
-
         return ans
 ```
 
