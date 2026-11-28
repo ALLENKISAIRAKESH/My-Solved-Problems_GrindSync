@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/](https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/) |
-| Submitted | 2026-11-28T12:33:11.770Z |
+| Submitted | 2026-11-28T12:33:18.528Z |
 
 
 ## Problem Statement
@@ -81,19 +81,13 @@ class Solution:
         n = len(items)
         dp = [0] * (budget + 1)
         min_price = min(price for factor, price in items)
-
         for i in range(n):
             factor, price = items[i]
-
-            # Count free items gained from buying this item type
             free = sum(
                 1 for f, _ in items
                 if f % factor == 0
             ) - 1
-
             gain = 1 + free
-
-            # Buy the first copy of this item (0/1 choice)
             for b in range(budget, price - 1, -1):
                 dp[b] = max(dp[b], dp[b - price] + gain)
 
