@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/](https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/) |
-| Submitted | 2026-11-28T12:35:37.570Z |
+| Submitted | 2026-11-28T12:35:45.948Z |
 
 
 ## Problem Statement
@@ -89,24 +89,16 @@ class Solution:
             if freq[x]:
                 for j in range(2 * x, M + 1, x):
                     freq[x] += freq[j]
-
-        # Create worthwhile offers
         offers = []
-
         for f, p in items:
             if p <= 2 * min_price:
                 offers.append((p, freq[f] - 1))
-
         offers.sort()
-
         ans = 0
-
-        # Buy BOGO offers
         for price, count in offers:
             take = min(count, budget // price)
             ans += 2 * take
             budget -= take * price
-
         # Buy remaining cheapest items
         ans += budget // min_price
 
