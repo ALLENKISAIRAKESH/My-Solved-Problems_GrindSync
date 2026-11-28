@@ -1,2 +1,32 @@
 class Solution:
     def maximumSaleItems(self, items: List[List[int]], budget: int) -> int:
+        n = len(items)
+
+        # Calculate free items unlocked by buying each item type
+        free = [0] * n
+
+        for i in range(n):
+            for j in range(n):
+                if i != j and items[i][0] < items[j][0] and items[j][0] % items[i][0] == 0:
+                    free[i] += 1
+
+        # First copy of each item gives 1 purchased item + free items
+        # Additional copies give only 1 item each
+        first = sorted([(items[i][1] / (1 + free[i]), items[i][1], free[i]) for i in range(n)])
+
+        ans = 0
+
+        for _, price, freebies in first:
+            if budget >= price:
+                budget -= price
+                ans += 1 + freebies
+
+        # Buy additional copies of the cheapest items
+        prices = sorted(items[i][1] for i in range(n))
+
+        for price in prices:
+            cnt = budget // price
+            ans += cnt
+            budget %= price
+
+        return ans
