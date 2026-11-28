@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/](https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/) |
-| Submitted | 2026-11-28T12:34:57.633Z |
+| Submitted | 2026-11-28T12:35:32.314Z |
 
 
 ## Problem Statement
@@ -79,28 +79,42 @@ Constraints:
 class Solution:
     def maximumSaleItems(self, items: List[List[int]], budget: int) -> int:
         n = len(items)
-        M = max(factor for factor, price in items)
+
+        M = max(f for f, p in items)
         freq = [0] * (M + 1)
-        for factor, price in items:
-            freq[factor] += 1
+
+        min_price = float('inf')
+
+        for f, p in items:
+            freq[f] += 1
+            min_price = min(min_price, p)
+
+        # Count all divisible factors
         for x in range(1, M + 1):
-            if freq[x] == 0:
-                continue
-            for multiple in range(2 * x, M + 1, x):
-                freq[x] += freq[multiple]
+            if freq[x]:
+                for j in range(2 * x, M + 1, x):
+                    freq[x] += freq[j]
+
+        # Create worthwhile offers
         offers = []
-        for factor, price in items:
-            free_count = freq[factor] - 1
-            if price <= 2 * min(p for f, p in items):
-                offers.append((price, free_count))
+
+        for f, p in items:
+            if p <= 2 * min_price:
+                offers.append((p, freq[f] - 1))
+
         offers.sort()
-        min_price = min(price for factor, price in items)
+
         ans = 0
+
+        # Buy BOGO offers
         for price, count in offers:
             take = min(count, budget // price)
-            ans += take * 2
+            ans += 2 * take
             budget -= take * price
+
+        # Buy remaining cheapest items
         ans += budget // min_price
+
         return ans
 ```
 
