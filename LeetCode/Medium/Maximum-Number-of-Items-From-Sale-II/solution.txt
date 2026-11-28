@@ -23,5 +23,4 @@ class Solution:
             ans += take * 2
             budget -= take * price
         ans += budget // min_price
-
         return ans

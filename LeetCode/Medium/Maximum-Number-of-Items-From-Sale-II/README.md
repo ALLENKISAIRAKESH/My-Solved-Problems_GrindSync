@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/](https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/) |
-| Submitted | 2026-11-28T12:34:54.004Z |
+| Submitted | 2026-11-28T12:34:57.633Z |
 
 
 ## Problem Statement
@@ -101,7 +101,6 @@ class Solution:
             ans += take * 2
             budget -= take * price
         ans += budget // min_price
-
         return ans
 ```
 
