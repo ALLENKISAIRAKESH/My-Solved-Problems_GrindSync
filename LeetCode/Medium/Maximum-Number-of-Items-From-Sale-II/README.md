@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/](https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/) |
-| Submitted | 2026-11-28T12:34:36.033Z |
+| Submitted | 2026-11-28T12:34:43.142Z |
 
 
 ## Problem Statement
@@ -79,15 +79,10 @@ Constraints:
 class Solution:
     def maximumSaleItems(self, items: List[List[int]], budget: int) -> int:
         n = len(items)
-
-        # Step 1: Count items by factor
         M = max(factor for factor, price in items)
         freq = [0] * (M + 1)
-
         for factor, price in items:
             freq[factor] += 1
-
-        # Step 2: Count divisible factors using multiples
         for x in range(1, M + 1):
             if freq[x] == 0:
                 continue
