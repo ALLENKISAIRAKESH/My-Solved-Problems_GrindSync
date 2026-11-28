@@ -21,7 +21,5 @@ class Solution:
             take = min(count, budget // price)
             ans += 2 * take
             budget -= take * price
-        # Buy remaining cheapest items
         ans += budget // min_price
-
         return ans

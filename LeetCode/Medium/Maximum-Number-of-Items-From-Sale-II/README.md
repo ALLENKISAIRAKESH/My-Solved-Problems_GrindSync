@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/](https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/) |
-| Submitted | 2026-11-28T12:35:45.948Z |
+| Submitted | 2026-11-28T12:35:50.704Z |
 
 
 ## Problem Statement
@@ -99,9 +99,7 @@ class Solution:
             take = min(count, budget // price)
             ans += 2 * take
             budget -= take * price
-        # Buy remaining cheapest items
         ans += budget // min_price
-
         return ans
 ```
 
