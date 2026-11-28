@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/](https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/) |
-| Submitted | 2026-11-28T12:34:48.459Z |
+| Submitted | 2026-11-28T12:34:54.004Z |
 
 
 ## Problem Statement
@@ -94,17 +94,12 @@ class Solution:
             if price <= 2 * min(p for f, p in items):
                 offers.append((price, free_count))
         offers.sort()
-
         min_price = min(price for factor, price in items)
         ans = 0
-
-        # Step 5: Buy the cheapest BOGO offers greedily
         for price, count in offers:
             take = min(count, budget // price)
             ans += take * 2
             budget -= take * price
-
-        # Step 6: Use remaining budget to buy cheapest items
         ans += budget // min_price
 
         return ans
