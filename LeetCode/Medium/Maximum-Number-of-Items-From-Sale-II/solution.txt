@@ -1,18 +1,42 @@
 class Solution:
     def maximumSaleItems(self, items: List[List[int]], budget: int) -> int:
         n = len(items)
-        dp = [0] * (budget + 1)
+
+        # Step 1: Count items by factor
+        M = max(factor for factor, price in items)
+        freq = [0] * (M + 1)
+
+        for factor, price in items:
+            freq[factor] += 1
+
+        # Step 2: Count divisible factors using multiples
+        for x in range(1, M + 1):
+            if freq[x] == 0:
+                continue
+
+            for multiple in range(2 * x, M + 1, x):
+                freq[x] += freq[multiple]
+
+        # Step 3: Calculate BOGO offers for each item
+        offers = []
+        for factor, price in items:
+            free_count = freq[factor] - 1
+            if price <= 2 * min(p for f, p in items):
+                offers.append((price, free_count))
+
+        # Step 4: Sort offers by price
+        offers.sort()
+
         min_price = min(price for factor, price in items)
-        for i in range(n):
-            factor, price = items[i]
-            free = sum(
-                1 for f, _ in items
-                if f % factor == 0
-            ) - 1
-            gain = 1 + free
-            for b in range(budget, price - 1, -1):
-                dp[b] = max(dp[b], dp[b - price] + gain)
         ans = 0
-        for spent in range(budget + 1):
-            ans = max(ans, dp[spent] + (budget - spent) // min_price)
+
+        # Step 5: Buy the cheapest BOGO offers greedily
+        for price, count in offers:
+            take = min(count, budget // price)
+            ans += take * 2
+            budget -= take * price
+
+        # Step 6: Use remaining budget to buy cheapest items
+        ans += budget // min_price
+
         return ans
