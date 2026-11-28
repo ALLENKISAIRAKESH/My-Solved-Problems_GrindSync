@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/](https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/) |
-| Submitted | 2026-11-28T12:30:58.744Z |
+| Submitted | 2026-11-28T12:31:05.722Z |
 
 
 ## Problem Statement
@@ -79,17 +79,11 @@ Constraints:
 class Solution:
     def maximumSaleItems(self, items: List[List[int]], budget: int) -> int:
         n = len(items)
-
-        # Calculate free items unlocked by buying each item type
         free = [0] * n
-
         for i in range(n):
             for j in range(n):
                 if i != j and items[i][0] < items[j][0] and items[j][0] % items[i][0] == 0:
                     free[i] += 1
-
-        # First copy of each item gives 1 purchased item + free items
-        # Additional copies give only 1 item each
         first = sorted([(items[i][1] / (1 + free[i]), items[i][1], free[i]) for i in range(n)])
 
         ans = 0
