@@ -1,20 +1,27 @@
 class Solution:
     def maximumSaleItems(self, items: List[List[int]], budget: int) -> int:
         n = len(items)
-        free = [0] * n
+        dp = [0] * (budget + 1)
+        min_price = min(price for factor, price in items)
+
         for i in range(n):
-            for j in range(n):
-                if i != j and items[i][0] < items[j][0] and items[j][0] % items[i][0] == 0:
-                    free[i] += 1
-        first = sorted([(items[i][1] / (1 + free[i]), items[i][1], free[i]) for i in range(n)])
+            factor, price = items[i]
+
+            # Count free items gained from buying this item type
+            free = sum(
+                1 for f, _ in items
+                if f % factor == 0
+            ) - 1
+
+            gain = 1 + free
+
+            # Buy the first copy of this item (0/1 choice)
+            for b in range(budget, price - 1, -1):
+                dp[b] = max(dp[b], dp[b - price] + gain)
+
+        # Spend leftover budget on the cheapest item repeatedly
         ans = 0
-        for _, price, freebies in first:
-            if budget >= price:
-                budget -= price
-                ans += 1 + freebies
-        prices = sorted(items[i][1] for i in range(n))
-        for price in prices:
-            cnt = budget // price
-            ans += cnt
-            budget %= price
+        for spent in range(budget + 1):
+            ans = max(ans, dp[spent] + (budget - spent) // min_price)
+
         return ans
