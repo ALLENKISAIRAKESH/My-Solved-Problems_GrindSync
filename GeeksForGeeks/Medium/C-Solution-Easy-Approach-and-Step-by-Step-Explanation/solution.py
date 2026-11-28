@@ -1,8 +1,18 @@
 class Solution:
-    def countEdges(self, adj: list[list[int]]) -> int:
-        count = 0
+    def checkPath(self, adj: list[list[int]], u: int, v: int) -> bool:
+        visited = [False] * len(adj)
+        stack = [u]
+        visited[u] = True
 
-        for neighbors in adj:
-            count += len(neighbors)
+        while stack:
+            node = stack.pop()
 
-        return count // 2
+            if node == v:
+                return True
+
+            for nei in adj[node]:
+                if not visited[nei]:
+                    visited[nei] = True
+                    stack.append(nei)
+
+        return False

@@ -4,8 +4,8 @@
 |-------|-------|
 | Platform | GeeksForGeeks |
 | Language | python3 |
-| URL | [https://www.geeksforgeeks.org/problems/count-number-of-edges-in-an-undirected-graph/1](https://www.geeksforgeeks.org/problems/count-number-of-edges-in-an-undirected-graph/1) |
-| Submitted | 2026-11-27T06:08:12.882Z |
+| URL | [https://www.geeksforgeeks.org/problems/path-exists/1](https://www.geeksforgeeks.org/problems/path-exists/1) |
+| Submitted | 2026-11-28T12:36:35.591Z |
 
 
 ## Problem Statement
@@ -16,13 +16,23 @@ MenuBack to Explore Page
 
 ```python
 class Solution:
-    def countEdges(self, adj: list[list[int]]) -> int:
-        count = 0
+    def checkPath(self, adj: list[list[int]], u: int, v: int) -> bool:
+        visited = [False] * len(adj)
+        stack = [u]
+        visited[u] = True
 
-        for neighbors in adj:
-            count += len(neighbors)
+        while stack:
+            node = stack.pop()
 
-        return count // 2
+            if node == v:
+                return True
+
+            for nei in adj[node]:
+                if not visited[nei]:
+                    visited[nei] = True
+                    stack.append(nei)
+
+        return False
 ```
 
 ---
