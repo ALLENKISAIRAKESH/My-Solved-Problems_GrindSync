@@ -6,7 +6,7 @@
 | Difficulty | Medium |
 | Language | original |
 | URL | [https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/](https://leetcode.com/problems/maximum-number-of-items-from-sale-ii/) |
-| Submitted | 2026-11-28T12:33:18.528Z |
+| Submitted | 2026-11-28T12:33:23.761Z |
 
 
 ## Problem Statement
@@ -90,12 +90,9 @@ class Solution:
             gain = 1 + free
             for b in range(budget, price - 1, -1):
                 dp[b] = max(dp[b], dp[b - price] + gain)
-
-        # Spend leftover budget on the cheapest item repeatedly
         ans = 0
         for spent in range(budget + 1):
             ans = max(ans, dp[spent] + (budget - spent) // min_price)
-
         return ans
 ```
 

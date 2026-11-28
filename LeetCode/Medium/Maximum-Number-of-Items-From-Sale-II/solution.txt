@@ -12,10 +12,7 @@ class Solution:
             gain = 1 + free
             for b in range(budget, price - 1, -1):
                 dp[b] = max(dp[b], dp[b - price] + gain)
-
-        # Spend leftover budget on the cheapest item repeatedly
         ans = 0
         for spent in range(budget + 1):
             ans = max(ans, dp[spent] + (budget - spent) // min_price)
-
         return ans
